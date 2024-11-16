@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблица с графиком и динамической окраской</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Показатель</th>
+                    <th>Текущий день</th>
+                    <th>Вчера</th>
+                    <th>Этот день недели</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Выручка, руб</td>
+                    <td><span class="number">500 521</span></td>
+                    <td><span class="number">480 521</span></td>
+                    <td><span class="number">4 805 121</span></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <table id="data-table-2">
+            <tbody>
+                <tr>
+                    <td>Наличные</td>
+                    <td><span class="number">300 000</span></td>
+                    <td><span class="number">300 000</span></td>
+                    <td><span class="number">300 000</span></td>
+                </tr>
+                <tr>
+                    <td>Безналичный расчет</td>
+                    <td><span class="number">100 000</span></td>
+                    <td><span class="number">100 000</span></td>
+                    <td><span class="number">100 000</span></td>
+                </tr>
+                <tr>
+                    <td>Кредитные карты</td>
+                    <td><span class="number">100 521</span></td>
+                    <td><span class="number">100 521</span></td>
+                    <td><span class="number">100 521</span></td>
+                </tr>
+                <tr>
+                    <td>Средний чек, руб</td>
+                    <td><span class="number">1 300</span></td>
+                    <td><span class="number">900</span></td>
+                    <td><span class="number">900</span></td>
+                </tr>
+                <tr>
+                    <td>Средний гость, руб</td>
+                    <td><span class="number">1 200</span></td>
+                    <td><span class="number">800</span></td>
+                    <td><span class="number">800</span></td>
+                </tr>
+                <tr>
+                    <td>Удаления из чека (после оплаты), руб</td>
+                    <td><span class="number">1 000</span></td>
+                    <td><span class="number">1 100</span></td>
+                    <td><span class="number">900</span></td>
+                </tr>
+                <tr>
+                    <td>Удаления из чека (до оплаты), руб</td>
+                    <td><span class="number">1 300</span></td>
+                    <td><span class="number">1 300</span></td>
+                    <td><span class="number">900</span></td>
+                </tr>
+                <tr>
+                    <td>Количество чеков</td>
+                    <td><span class="number">34</span></td>
+                    <td><span class="number">36</span></td>
+                    <td><span class="number">34</span></td>
+                </tr>
+                <tr>
+                    <td>Количество гостей</td>
+                    <td><span class="number">34</span></td>
+                    <td><span class="number">36</span></td>
+                    <td><span class="number">32</span></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
