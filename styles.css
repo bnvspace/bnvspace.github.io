@@ -215,3 +215,52 @@ form label {
     /* max-width: 200px; */
     margin: 10px 10px 10px 10px;
 }
+@media (max-width: 1024px) {
+    /* Styles for screens smaller than 1024px */
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .navbar button {
+        margin-right: 10px;
+    }
+
+    .controls button {
+        margin-right: 10px;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .popup-overlay {
+        width: 80%;
+        max-width: 400px;
+    }
+
+    .form-client .left,
+    .form-client .right {
+        width: 100%;
+    }
+
+    .form-client .right label {
+        width: 100%;
+    }
+
+    .form-content label,
+    .form-client label {
+        width: 100%;
+    }
+
+    .day-toggler,
+    .day-btn {
+        width: 100%;
+    }
+    .navbar, .controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+}
