@@ -87,10 +87,25 @@ function changePaymentTypeHandlerNew(event) {
     const paymentTypeCell = row.cells[3]; // поле с типом оплаты
     paymentTypeCell.contentEditable = 'true'; // делаем поле активным для редактирования
     paymentTypeCell.focus(); // устанавливаем фокус на поле
+
+    // добавляем подсветку ячейки
+    paymentTypeCell.style.background = 'rgba(255, 255, 0, 1)'; // устанавливаем подсветку ячейки
+
+    // добавляем обработчик события для сброса подсветки ячейки
+    paymentTypeCell.addEventListener('blur', function () {
+      paymentTypeCell.style.background = ''; // сбрасываем подсветку ячейки
+    });
+
+    // добавляем обработчик события для сброса подсветки ячейки
+    paymentTypeCell.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter') {
+        paymentTypeCell.style.background = ''; // сбрасываем подсветку ячейки
+      }
+    });
   }
 }
 
-document.querySelector('.change-payment-type').addEventListener('click', function() {
+document.querySelector('.change-payment-type').addEventListener('click', function () {
   isChangePaymentTypeMode = !isChangePaymentTypeMode;
 
   if (isChangePaymentTypeMode) {
@@ -131,8 +146,25 @@ function changeNumberHandlerNew(event) {
     const numberCell = row.cells[0]; // поле с номером
     numberCell.contentEditable = 'true'; // делаем поле активным для редактирования
     numberCell.focus(); // устанавливаем фокус на поле
+
+
+    // добавляем подсветку ячейки
+    numberCell.style.background = 'rgba(255, 255, 0, 1)'; // устанавливаем подсветку ячейки
+
+    // добавляем обработчик события для сброса подсветки ячейки
+    numberCell.addEventListener('blur', function () {
+      numberCell.style.background = ''; // сбрасываем подсветку ячейки
+    });
+
+    // добавляем обработчик события для сброса подсветки ячейки
+    numberCell.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter') {
+        numberCell.style.background = ''; // сбрасываем подсветку ячейки
+      }
+    });
   }
 }
+
 
 document.querySelector('.change-number').addEventListener('click', function () {
   isChangeNumberMode = !isChangeNumberMode;

@@ -127,6 +127,7 @@ table {
 
 table th,
 table td {
+    max-width: 110px;
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
