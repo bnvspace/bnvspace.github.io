@@ -4,97 +4,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Таблица с графиком и динамической окраской</title>
+    <title>Учет товаров</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <div class="container">
-        <table id="data-table">
-            <thead>
-                <tr>
-                    <th>Показатель</th>
-                    <th>Текущий день</th>
-                    <th>Вчера</th>
-                    <th>Этот день недели</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Выручка, руб</td>
-                    <td><span class="number">500 521</span></td>
-                    <td><span class="number">480 521</span></td>
-                    <td><span class="number">4 805 121</span></td>
-                    
-                </tr>
-            </tbody>
-        </table>
-        
-        <div class="chart-container">
-            <canvas id="myChart"></canvas>
+        <div class="navbar">
+            <button>Регистрация товаров</button>
+            <button style="background-color: #00000059;">Отчёты</button>
+            <button style="background-color: #00000059;">Склад</button>
+            <button style="background-color: #00000059;">Список инструментов</button>
+            <button style="background-color: #00000059;">Консультанты</button>
         </div>
-
-        <table id="data-table-2">
-            <tbody>
-                <tr>
-                    <td>Наличные</td>
-                    <td><span class="number">300 000</span></td>
-                    <td><span class="number">300 000</span></td>
-                    <td><span class="number">300 000</span></td>
-                </tr>
-                <tr>
-                    <td>Безналичный расчет</td>
-                    <td><span class="number">100 000</span></td>
-                    <td><span class="number">100 000</span></td>
-                    <td><span class="number">100 000</span></td>
-                </tr>
-                <tr>
-                    <td>Кредитные карты</td>
-                    <td><span class="number">100 521</span></td>
-                    <td><span class="number">100 521</span></td>
-                    <td><span class="number">100 521</span></td>
-                </tr>
-                <tr>
-                    <td>Средний чек, руб</td>
-                    <td><span class="number">1 300</span></td>
-                    <td><span class="number">900</span></td>
-                    <td><span class="number">900</span></td>
-                </tr>
-                <tr>
-                    <td>Средний гость, руб</td>
-                    <td><span class="number">1 200</span></td>
-                    <td><span class="number">800</span></td>
-                    <td><span class="number">800</span></td>
-                </tr>
-                <tr>
-                    <td>Удаления из чека (после оплаты), руб</td>
-                    <td><span class="number">1 000</span></td>
-                    <td><span class="number">1 100</span></td>
-                    <td><span class="number">900</span></td>
-                </tr>
-                <tr>
-                    <td>Удаления из чека (до оплаты), руб</td>
-                    <td><span class="number">1 300</span></td>
-                    <td><span class="number">1 300</span></td>
-                    <td><span class="number">900</span></td>
-                </tr>
-                <tr>
-                    <td>Количество чеков</td>
-                    <td><span class="number">34</span></td>
-                    <td><span class="number">36</span></td>
-                    <td><span class="number">34</span></td>
-                </tr>
-                <tr>
-                    <td>Количество гостей</td>
-                    <td><span class="number">34</span></td>
-                    <td><span class="number">36</span></td>
-                    <td><span class="number">32</span></td>
-                </tr>
-            </tbody>
-        </table>
-        
+        <div class="controls">
+            <button class="green" id="openPopup">Добавить заказ</button>
+            <button style="background-color: #00000059;">Документы</button>
+            <button style="background-color: #00000059;">Просмотр товаров</button>
+            <button class="green">Закрыть аренду</button>
+            <button style="background-color: #00000059;">Касса</button>
+            <button class="red">Пометить/Снять на удаление</button>
+            <button style="background-color: #00000059;">Изменить номер</button>
+            <button style="background-color: #00000059;">Изменить тип оплаты</button>
+            <button style="background-color: #00000059;">Изменить консультанта</button>
+            <button class="red">Закрыть смену</button>
+        </div>
+        <div class="table-container">
+            <table class="orders">
+                <thead>
+                    <tr>
+                        <th>Номер</th>
+                        <th>Создал</th>
+                        <th>Консультант</th>
+                        <th>Тип оплаты</th>
+                        <th>Статус</th>
+                        <th>Удалить</th>
+                        <th>Скидки</th>
+                        <th>Товары</th>
+                        <th>Ф.И.О</th>
+                        <th>Выдано</th>
+                        <th>Дата приёма</th>
+                        <th>Оплачено</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>241158</td>
+                        <td>Кассир</td>
+                        <td>Иван</td>
+                        <td>Наличные</td>
+                        <td>закрыт</td>
+                        <td>Нет</td>
+                        <td>10%</td>
+                        <td>Лестница KRAUSE 3*9</td>
+                        <td>Мирзаканов Шохсултан Д.</td>
+                        <td>16:30</td>
+                        <td>2024-06-05 16:30</td>
+                        <td>15000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <button class="close-popup" id="closePopup">&times;</button>
+            <form class="form">
+                <h2>Регистрация товаров</h2>
+                <div class="form-content">
+                    <label>Вид товара(1): <input type="text" name="productType" value="Test"></label>
+                    <label>Сер-ном: <input type="text" name="serialNumber" value="01010101"></label>
+                </div>
+                <div class="form-client">
+                    <div class="left">
+                        <label>ИИН: <input type="text" name="iin" value="123456789"></label>
+                        <label>Ф.И.О: <input type="text" name="fullName" value="Иванов Иван Иванович"></label>
+                        <label>№ удостоверения: <input type="text" name="idNumber" value="123456"></label>
+                        <label>Выдано/участок: <input type="text" name="issuedBy" value="МВД РФ"></label>
+                        <label>Адрес: <input type="text" name="address" value="Москва, ул. Ленина, 1"></label>
+                    </div>
+                    <div class="right">
+                        <label>Телефон: <input type="text" name="phone" value="+7 123 456 78 90"></label>
+                        <label>Дата выдачи: <input type="datetime-local" name="issueDate"
+                                value="2022-01-01T12:00:00"></label>
+                        <label>Дата сдачи: <input type="datetime-local" name="returnDate"
+                                value="2022-01-15T12:00:00"></label>
+                        <div class="days-control">
+                            <label>Доп. дни:</label>
+                            <div class="day-cont">
+                                <div class="day-toggler">
+                                    <button type="button" class="btn minus" onclick="changeDays(-1)">-</button>
+                                    <input type="number" id="additional-days" value="1" pattern="[0-9]*">
+                                    <button type="button" class="btn plus" onclick="changeDays(1)">+</button>
+                                  </div>
+                                  
+                                  <div class="day-btn">
+                                    <button type="button" class="btn" onclick="setDays(10)">+10</button>
+                                    <button type="button" class="btn" onclick="setDays(20)">+20</button>
+                                    <button type="button" class="btn" onclick="setDays(30)">+30</button>
+                                  </div>
+                            </div>
+                        </div>
+                        <label>Оплачено: <input type="text" name="paid" value="1000"></label>
+                        <label>Долг: <input type="text" name="debt" value="0"></label>
+                        <label>Тип оплаты: <input type="text" name="paymentType" value="Наличные"></label>
+                        <label>Консультант: <input type="text" name="consultant" value="Иванов Иван Иванович"></label>
+                    </div>
+                </div>
+                <div class="form-discont">
+                    <label>Применить скидку:
+                        <select name="discountType">
+                            <option>4+1</option>
+                            <option>10+3</option>
+                            <option>Спец цена</option>
+                            <option>Сброс</option>
+                        </select>
+
+                    </label>
+                    <br>
+                    <label> Общая сумма товаров (тг)
+                        <input type="number" min="0" value="100500" name="discount"></label>
+                </div>
+
+                <div class="btn-cont">
+                    <button type="submit">Сохранить</button>
+                    <button type="reset">Сброс</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
     <script src="script.js"></script>
 </body>
 

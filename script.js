@@ -1,176 +1,137 @@
-function colorizeTable(tableId) {
-    const table = document.getElementById(tableId);
-    const rows = table.querySelectorAll("tbody tr");
-
-    rows.forEach(row => {
-        const cells = row.getElementsByTagName("td");
-
-        const currentValueText = cells[1].innerText;
-        const yesterdayValueText = cells[2].innerText;
-        const weekDayValueText = cells[3].innerText;
-
-        const currentValue = parseFloat(currentValueText.replace(/\s+/g, '').replace(',', '.'));
-        const yesterdayValue = parseFloat(yesterdayValueText.replace(/\s+/g, '').replace(',', '.'));
-        const weekDayValue = parseFloat(weekDayValueText.replace(/\s+/g, '').replace(',', '.'));
-
-        if (isNaN(currentValue) || isNaN(yesterdayValue) || isNaN(weekDayValue)) {
-            console.log("Ошибка: одно из значений не является числом.");
-            return;
-        }
-
-        let yesterdayText = yesterdayValueText.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-        let percentChangeYesterday = "";
-
-        if (yesterdayValue < currentValue) {
-            const percent = Math.ceil(((currentValue - yesterdayValue) / yesterdayValue) * 100);
-            percentChangeYesterday = ` <span class="percent-green">+${percent}%</span>`;
-            cells[2].classList.add("bg-green");
-            cells[2].classList.remove("bg-red", "bg-neutral");
-        } else if (yesterdayValue > currentValue) {
-            const percent = Math.ceil(((yesterdayValue - currentValue) / currentValue) * 100);
-            percentChangeYesterday = ` <span class="percent-red">-${percent}%</span>`;
-            cells[2].classList.add("bg-red");
-            cells[2].classList.remove("bg-green", "bg-neutral");
-        } else {
-            percentChangeYesterday = ` <span class="percent-neutral">+0%</span>`;
-            cells[2].classList.add("bg-neutral");
-            cells[2].classList.remove("bg-green", "bg-red");
-        }
-
-        const numberText = `<span class="number">${yesterdayText}</span>`;
-        const percentageText = `<span class="percent">${percentChangeYesterday}</span>`;
-
-        cells[2].innerHTML = numberText + percentageText;
-
-        const weekDayCell = cells[3];
-        if (weekDayValue > currentValue) {
-            weekDayCell.classList.add("bg-red");
-            weekDayCell.classList.remove("bg-green");
-        } else if (weekDayValue < currentValue) {
-            weekDayCell.classList.add("bg-green");
-            weekDayCell.classList.remove("bg-red");
-        } else {
-            weekDayCell.classList.remove("bg-green", "bg-red");
-        }
-    });
-}
-
-function onRowClick(event) {
-    const cells = event.target.parentElement.getElementsByTagName("td");
-
-    // Преобразуем все значения в строках в массив чисел, игнорируя первый столбец
-    const rowData = Array.from(cells).slice(1).map(cell => parseFloat(cell.innerText.replace(/\s/g, '').replace(',', '.')));
-
-    // Проверяем, если значение равно 0%, то не добавляем его в данные
-    const filteredData = rowData.map(value => (value === 0 ? value : value));
-
-    createChart(filteredData); // Передаем весь ряд данных
-}
-
-let myChart;
-function createChart(data) {
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const chartLabels = ['0', '1', '2', '3', '4', '5', '6'];
-
-    if (myChart) {
-        myChart.destroy();
-    }
-
-    myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: chartLabels,
-            datasets: [{
-                label: 'Выручка, руб',
-                data: data, // Используем только чистые данные без 0% изменений
-                borderColor: 'green',
-                backgroundColor: '#268f68',
-                borderWidth: 2,
-                pointBackgroundColor: '#268f68',
-                pointBorderColor: '#268f68',
-                pointRadius: 5,
-                tension: 0
-            }]
-        },
-        options: {
-            responsive: true,
-            layout: {
-                padding: {
-                    top: 10,
-                    bottom: 10,
-                    left: 10,
-                    right: 10
-                }
-            },
-            scales: {
-                y: {
-                    grid: {
-                        drawTicks: false,
-                        color: 'transparent'
-                    },
-                    ticks: {
-                        callback: function () {
-                            return '■';
-                        },
-                        padding: 0,
-                        font: {
-                            size: 12,
-                            family: 'Arial'
-                        },
-                        color: '#000000'
-                    },
-                    border: {
-                        display: true,
-                        color: '#000000',
-                        width: 2
-                    }
-                },
-                x: {
-                    grid: {
-                        drawTicks: false,
-                        color: 'transparent'
-                    },
-                    ticks: {
-                        callback: function () {
-                            return '■';
-                        },
-                        padding: -3,
-                        font: {
-                            size: 12,
-                            family: 'Arial'
-                        },
-                        color: '#000000'
-                    },
-                    border: {
-                        display: true,
-                        color: '#000000',
-                        width: 2
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    colorizeTable("data-table");
-    colorizeTable("data-table-2");
-
-    const rows1 = document.querySelectorAll("#data-table tbody tr");
-    rows1.forEach(row => {
-        row.addEventListener("click", onRowClick);
-    });
-
-    const rows2 = document.querySelectorAll("#data-table-2 tbody tr");
-    rows2.forEach(row => {
-        row.addEventListener("click", onRowClick);
-    });
-
-    const initialData = [0, 2800521, 3980521, 4800521, 3805121, 3580521, 4805121];
-    createChart(initialData);
+document.getElementById('openPopup').addEventListener('click', function() {
+    document.getElementById('popupOverlay').style.display = 'flex';
 });
+
+document.getElementById('closePopup').addEventListener('click', function() {
+    document.getElementById('popupOverlay').style.display = 'none';
+});
+
+// Добавляем обработчик события отправки формы
+document.querySelector('.form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Предотвращаем перезагрузку страницы
+
+    // Получаем значения из полей ввода
+    const number = Math.floor(Math.random() * 1000000); // Генерируем случайный номер
+    const creator = 'Кассир'; // Предполагаем, что создатель всегда "Кассир"
+    const consultant = document.querySelector('input[name="consultant"]').value;
+    const paymentType = document.querySelector('input[name="paymentType"]').value;
+    const status = 'открыт'; // Предполагаем, что новый заказ всегда "открыт"
+    const deletable = 'Нет'; // Предполагаем, что новый заказ нельзя удалить
+    const discounts = ''; // Пока оставим пустым
+    const product = document.querySelector('input[name="productType"]').value;
+    const fullName = document.querySelector('input[name="fullName"]').value;
+    const issuedTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    const receiptDate = document.querySelector('input[name="issueDate"]').value;
+    const paid = document.querySelector('input[name="paid"]').value;
+
+    // Создаем новую строку таблицы
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td>${number}</td>
+        <td>${creator}</td>
+        <td>${consultant}</td>
+        <td>${paymentType}</td>
+        <td>${status}</td>
+        <td>${deletable}</td>
+        <td>${discounts}</td>
+        <td>${product}</td>
+        <td>${fullName}</td>
+        <td>${issuedTime}</td>
+        <td>${receiptDate}</td>
+        <td>${paid}</td>
+    `;
+
+    // Добавляем новую строку в таблицу
+    document.querySelector('.orders tbody').appendChild(newRow);
+
+    // Очищаем форму
+    this.reset();
+
+    // Закрываем попап
+    document.getElementById('popupOverlay').style.display = 'none';
+
+    // Показываем сообщение об успешном сохранении
+    showMessage('Заказ успешно сохранен!');
+});
+
+// Функция для показа сообщения
+function showMessage(message) {
+    const messageElement = document.createElement('div');
+    messageElement.textContent = message;
+    messageElement.style.position = 'fixed';
+    messageElement.style.top = '20px';
+    messageElement.style.left = '50%';
+    messageElement.style.transform = 'translateX(-50%)';
+    messageElement.style.backgroundColor = '#4CAF50';
+    messageElement.style.color = 'white';
+    messageElement.style.padding = '15px';
+    messageElement.style.borderRadius = '5px';
+    messageElement.style.zIndex = '1001';
+
+    document.body.appendChild(messageElement);
+
+    // Удаляем сообщение через 3 секунды
+    setTimeout(() => {
+        document.body.removeChild(messageElement);
+    }, 3000);
+}
+document.getElementById('closePopup').addEventListener('click', function() {
+    document.getElementById('popupOverlay').style.display = 'none';
+});
+let isSelectionMode = false;
+
+document.querySelector('.red').addEventListener('click', function() {
+  isSelectionMode = !isSelectionMode;
+
+  if (isSelectionMode) {
+    const tableRows = document.querySelectorAll('table tr');
+
+    tableRows.forEach((row) => {
+      row.addEventListener('click', clickHandler);
+    });
+
+    this.style.background = 'rgba(0, 0, 0, 0.1)'; // меняем цвет кнопки
+    this.style.color = 'white'; // меняем цвет текста кнопки
+  } else {
+    const tableRows = document.querySelectorAll('table tr');
+
+    tableRows.forEach((row) => {
+      row.removeEventListener('click', clickHandler);
+
+      row.classList.remove('selected');
+      row.style.background = '';
+      row.style.cursor = 'default'; // сбрасываем курсор
+    });
+
+    this.style.background = ''; // сбрасываем цвет кнопки
+    this.style.color = ''; // сбрасываем цвет текста кнопки
+  }
+});
+
+function clickHandler(event) {
+    if (isSelectionMode) {
+      const row = event.target.parentNode;
+      row.classList.toggle('selected');
+    }
+  }
+  document.querySelector('button[type="reset"]').addEventListener('click', function() {
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+      input.value = '';
+      input.defaultValue = '';
+    });
+  });
+
+  function changeDays(amount) {
+    const input = document.getElementById('additional-days');
+    const currentValue = parseInt(input.value);
+    const newValue = Math.max(0, currentValue + amount);
+    input.value = newValue;
+  }
+  
+  function setDays(amount) {
+    const input = document.getElementById('additional-days');
+    const currentValue = parseInt(input.value);
+    const newValue = currentValue + amount;
+    input.value = newValue;
+  }
