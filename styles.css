@@ -29,8 +29,15 @@ tr:hover{
     border: none;
     cursor: pointer;
 }
+.btn{
+    color: #ffffff;
+    background-color: #3399D9;
+}
 .selected {
     background-color: rgba(0, 0, 0, 0.5);
+  }
+.selected-e {
+    background-color: rgb(221 93 93 / 50%);
   }
 .green {
     background-color: #4CAF50;
