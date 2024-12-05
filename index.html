@@ -33,23 +33,113 @@
             <table class="orders">
                 <thead>
                     <tr>
-                        <th>Номер</th>
-                        <th>Создал</th>
-                        <th>Консультант</th>
-                        <th>Тип оплаты</th>
-                        <th>Статус</th>
-                        <th>Удалить</th>
-                        <th>Скидки</th>
-                        <th>Товары</th>
-                        <th>Ф.И.О</th>
-                        <th>Выдано</th>
-                        <th>Дата приёма</th>
-                        <th>Оплачено</th>
+                        <th>Номер
+                            <select name="numberFilter" id="numberFilter">
+                                <option value="">Все</option>
+                            </select>
+                        </th>
+                        <th>Создал
+                            <select name="creatorFilter" id="creatorFilter">
+                                <option value="">Все</option>
+                            </select>
+                        </th>
+                        <th>Консультант
+                            <select name="consultantFilter" id="consultantFilter">
+                                <option value="">Все</option>
+                            </select>
+                        </th>
+                        <th>Тип оплаты
+                            <select name="paymentTypeFilter" id="paymentTypeFilter">
+                                <option value="">Все</option>
+                            </select>
+                        </th>
+                        <th>Статус
+                            <select name="statusFilter" id="statusFilter">
+                                <option value="">Все</option>
+                            </select>
+                        </th>
+                        <th>Удалить
+                            <select name="deleteFilter" id="deleteFilter">
+                                <option value="">Все</option>
+                            </select>
+                        </th>
+                        <th>Скидки
+                            <select name="discountsFilter" id="discountsFilter">
+                                <option value="">Все</option>
+                            </select>
+                        </th>
+                        <th>Товары
+                            <select name="productsFilter" id="productsFilter">
+                                <option value="">Все</option>
+                            </select>
+                        </th>
+                        <th>Ф.И.О
+                            <select name="fullNameFilter" id="fullNameFilter">
+                                <option value="">Все</option>
+                            </select>
+                        </th>
+                        <th>Выдано
+                            <select name="issuedFilter" id="issuedFilter">
+                                <option value="">Все</option>
+                            </select>
+                        </th>
+                        <th>Дата приёма
+                            <select name="receiptDateFilter" id="receiptDateFilter">
+                                <option value="">Все</option>
+                            </select>
+                        </th>
+                        <th>Оплачено
+                            <select name="paidFilter" id="paidFilter">
+                                <option value="">Все</option>
+                            </select>
+                        </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tableBody">
                     <tr>
                         <td>241158</td>
+                        <td>Кассир</td>
+                        <td>Иван</td>
+                        <td>Наличные</td>
+                        <td>закрыт</td>
+                        <td>Нет</td>
+                        <td>10%</td>
+                        <td>Лестница KRAUSE 3*9</td>
+                        <td>Мирзаканов Шохсултан Д.</td>
+                        <td>16:30</td>
+                        <td>2024-06-05 16:30</td>
+                        <td>15000</td>
+                    </tr>
+                    <tr>
+                        <td>241158</td>
+                        <td>Кассир</td>
+                        <td>Иван</td>
+                        <td>Наличные</td>
+                        <td>закрыт</td>
+                        <td>Нет</td>
+                        <td>10%</td>
+                        <td>Лестница KRAUSE 3*9</td>
+                        <td>Мирзаканов Шохсултан Д.</td>
+                        <td>16:30</td>
+                        <td>2024-06-05 16:30</td>
+                        <td>15000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>неКассир</td>
+                        <td>Иван</td>
+                        <td>Наличные</td>
+                        <td>закрыт</td>
+                        <td>Нет</td>
+                        <td>10%</td>
+                        <td>Лестница KRAUSE 3*9</td>
+                        <td>Мирзаканов Шохсултан Д.</td>
+                        <td>16:30</td>
+                        <td>2024-06-05 16:30</td>
+                        <td>15000</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
                         <td>Кассир</td>
                         <td>Иван</td>
                         <td>Наличные</td>
@@ -97,13 +187,13 @@
                                     <button type="button" class="btn minus" onclick="changeDays(-1)">-</button>
                                     <input type="number" id="additional-days" value="1" pattern="[0-9]*">
                                     <button type="button" class="btn plus" onclick="changeDays(1)">+</button>
-                                  </div>
-                                  
-                                  <div class="day-btn">
+                                </div>
+
+                                <div class="day-btn">
                                     <button type="button" class="btn" onclick="setDays(10)">+10</button>
                                     <button type="button" class="btn" onclick="setDays(20)">+20</button>
                                     <button type="button" class="btn" onclick="setDays(30)">+30</button>
-                                  </div>
+                                </div>
                             </div>
                         </div>
                         <label>Оплачено: <input type="text" name="paid" value="1000"></label>
@@ -137,6 +227,61 @@
 
 
     <script src="script.js"></script>
+    <script>
+        // Получаем данные из таблицы
+        const tableData = document.querySelectorAll('#tableBody tr');
+    
+        // Заполняем выпадающие списки значениями из таблицы
+        const numberFilter = document.getElementById('numberFilter');
+        const creatorFilter = document.getElementById('creatorFilter');
+    
+        tableData.forEach(row => {
+            const number = row.cells[0].textContent;
+            const creator = row.cells[1].textContent;
+    
+            // Добавляем значения в выпадающие списки
+            if (!numberFilter.querySelector(`option[value="${number}"]`)) {
+                const option = document.createElement('option');
+                option.value = number;
+                option.textContent = number;
+                numberFilter.appendChild(option);
+            }
+    
+            if (!creatorFilter.querySelector(`option[value="${creator}"]`)) {
+                const option = document.createElement('option');
+                option.value = creator;
+                option.textContent = creator;
+                creatorFilter.appendChild(option);
+            }
+        });
+    
+        // Фильтрация таблицы при выборе значения из выпадающего списка
+        numberFilter.addEventListener('change', filterTable);
+        creatorFilter.addEventListener('change', filterTable);
+    
+        function filterTable() {
+            const numberValue = numberFilter.value;
+            const creatorValue = creatorFilter.value;
+    
+            tableData.forEach(row => {
+                const number = row.cells[0].textContent;
+                const creator = row.cells[1].textContent;
+    
+                if ((numberValue === '' || number === numberValue) &&
+                    (creatorValue === '' || creator === creatorValue)) {
+                    row.classList.remove('hidden');
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+    
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </body>
 
 </html>
