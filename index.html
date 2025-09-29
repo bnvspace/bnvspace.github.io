@@ -1,253 +1,1892 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru-RU"
+	class="js supports no-touchevents no-forcetouch objectfit object-fit cssanimations no-cssgridlegacy cssgrid cssfilters csstransforms csstransforms3d csstransitions mobile-false not-iOS"
+	style=""><!--<![endif]-->
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Учет товаров</title>
-    <link rel="stylesheet" href="styles.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<title>Служба эвакуации автомобилей</title>
+	<link rel="stylesheet" id="bdt-uikit-css" href="assets/css/bdt-uikit.css" type="text/css" media="all">
+	<link rel="stylesheet" id="ep-helper-css" href="assets/css/ep-helper.css" type="text/css" media="all">
+	<link rel="stylesheet" id="wp-block-library-css" href="assets/css/style.min.css" type="text/css" media="all">
+
+	<script type="text/javascript">
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+			var originalAddEventListener = EventTarget.prototype.addEventListener,
+				oldWidth = window.innerWidth;
+
+			EventTarget.prototype.addEventListener = function (eventName, eventHandler, useCapture) {
+				if (eventName === "resize") {
+					originalAddEventListener.call(this, eventName, function (event) {
+						if (oldWidth === window.innerWidth) {
+							return;
+						}
+						oldWidth = window.innerWidth;
+						if (eventHandler.handleEvent) {
+							eventHandler.handleEvent.call(this, event);
+						}
+						else {
+							eventHandler.call(this, event);
+						};
+					}, useCapture);
+				}
+				else {
+					originalAddEventListener.call(this, eventName, eventHandler, useCapture);
+				};
+			};
+		};
+	</script>
+	<link rel="stylesheet" id="classic-theme-styles-css" href="assets/css/classic-themes.min.css" type="text/css"
+		media="all">
+
+	<link rel="stylesheet" id="paoc-pro-public-style-css" href="assets/css/paoc-public.min.css" type="text/css"
+		media="all">
+	<link rel="stylesheet" id="elementor-icons-css" href="assets/css/elementor-icons.min.css" type="text/css"
+		media="all">
+	<link rel="stylesheet" id="elementor-frontend-css" href="assets/css/frontend.min.css" type="text/css" media="all">
+	<link rel="stylesheet" id="elementor-post-6-css" href="assets/css/post-6.css" type="text/css" media="all">
+	<link rel="stylesheet" id="elementor-pro-css" href="assets/css/frontend.min_699f08a7.css" type="text/css"
+		media="all">
+	<link rel="stylesheet" id="elementor-global-css" href="assets/css/global.css" type="text/css" media="all">
+	<link rel="stylesheet" id="elementor-post-39-css" href="assets/css/post-39.css" type="text/css" media="all">
+	<link rel="stylesheet" id="elementor-post-72-css" href="assets/css/post-72.css" type="text/css" media="all">
+	<link rel="stylesheet" id="dt-web-fonts-css" href="assets/css/css.css" type="text/css" media="all">
+	<link rel="stylesheet" id="dt-main-css" href="assets/css/main.min.css" type="text/css" media="all">
+	<link rel="stylesheet" id="the7-font-css" href="assets/css/icomoon-the7-font.min.css" type="text/css" media="all">
+	<link rel="stylesheet" id="the7-custom-scrollbar-css" href="assets/css/custom-scrollbar.min.css" type="text/css"
+		media="all">
+	<link rel="stylesheet" id="the7-core-css" href="assets/css/post-type.min.css" type="text/css" media="all">
+	<link rel="stylesheet" id="the7-css-vars-css" href="assets/css/css-vars.css" type="text/css" media="all">
+	<link rel="stylesheet" id="dt-custom-css" href="assets/css/custom.css" type="text/css" media="all">
+	<link rel="stylesheet" id="dt-media-css" href="assets/css/media.css" type="text/css" media="all">
+	<link rel="stylesheet" id="the7-mega-menu-css" href="assets/css/mega-menu.css" type="text/css" media="all">
+	<link rel="stylesheet" id="the7-elements-albums-portfolio-css" href="assets/css/the7-elements-albums-portfolio.css"
+		type="text/css" media="all">
+	<link rel="stylesheet" id="the7-elements-css" href="assets/css/post-type-dynamic.css" type="text/css" media="all">
+	<link rel="stylesheet" id="style-css" href="assets/css/style.css" type="text/css" media="all">
+	<link rel="stylesheet" id="the7-elementor-global-css" href="assets/css/elementor-global.min.css" type="text/css"
+		media="all">
+	<link rel="stylesheet" id="google-fonts-1-css" href="assets/css/css_cd964190.css" type="text/css" media="all">
+	<link rel="stylesheet" id="elementor-icons-shared-0-css" href="assets/css/fontawesome.min.css" type="text/css"
+		media="all">
+	<link rel="stylesheet" id="elementor-icons-fa-solid-css" href="assets/css/solid.min.css" type="text/css"
+		media="all">
+	<link rel="stylesheet" id="elementor-icons-the7-icons-css" href="assets/css/icomoon-the7-font.min.css"
+		type="text/css" media="all">
+	<link rel="icon" href="favicon.png" sizes="32x32">
+	<link rel="icon" href="favicon.png" sizes="192x192">
+	<link rel="apple-touch-icon" href="favicon.png">
+	<link rel="stylesheet" href="assets/css/inline-styles.css">
+	<style>
+		/* Стили для кнопки воспроизведения видео */
+		.video-play-button {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 80px;
+			height: 80px;
+			background: rgba(0, 0, 0, 0.7);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			z-index: 10;
+		}
+
+		.video-play-button:hover {
+			background: rgba(0, 0, 0, 0.9);
+			transform: translate(-50%, -50%) scale(1.1);
+		}
+
+		.video-play-button i {
+			color: white;
+			font-size: 30px;
+			margin-left: 5px; /* Центрирование треугольника */
+		}
+
+		/* Показываем кнопку только для видео */
+		.bdt-ep-advanced-image-gallery-item:not([data-video]) .video-play-button {
+			display: none;
+		}
+
+		/* Стиль для элементов с видео */
+		.bdt-ep-advanced-image-gallery-item[data-video] {
+			position: relative;
+		}
+	</style>
+	<link rel="stylesheet" id="ep-fancy-list-css" href="assets/css/ep-fancy-list.css" type="text/css" media="all">
+	<link rel="stylesheet" id="ep-advanced-image-gallery-css" href="assets/css/ep-advanced-image-gallery.css"
+		type="text/css" media="all">
+	<link rel="stylesheet" id="ep-font-css" href="assets/css/ep-font.css" type="text/css" media="all">
+	<link rel="stylesheet" id="ep-review-card-carousel-css" href="assets/css/ep-review-card-carousel.css"
+		type="text/css" media="all">
+	<link rel="stylesheet" id="ep-advanced-heading-css" href="assets/css/ep-advanced-heading.css" type="text/css"
+		media="all">
+	<link rel="stylesheet" id="e-animations-css" href="assets/css/animations.min.css" type="text/css" media="all">
+	<script type="text/javascript" src="assets/js/jquery.min.js" id="jquery-core-js"></script>
+	<script type="text/javascript" src="assets/js/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+	<script type="text/javascript" src="assets/js/main.min.js" id="dt-main-js"></script>
+	<script type="text/javascript" src="assets/js/jquery-mousewheel.min.js" id="jquery-mousewheel-js"></script>
+	<script type="text/javascript" src="assets/js/custom-scrollbar.min.js" id="the7-custom-scrollbar-js"></script>
+	<script type="text/javascript" src="assets/js/post-type.min.js" id="the7-core-js"></script>
+	<script type="text/javascript" src="assets/js/imagesloaded.min.js" id="imagesloaded-js"></script>
+	<script type="text/javascript" src="assets/js/jquery.justifiedGallery.min.js" id="ep-justified-gallery-js"></script>
+	<script type="text/javascript" src="assets/js/vanilla-tilt.min.js" id="tilt-js"></script>
+	<script type="text/javascript" id="bdt-uikit-js-extra">
+		/* <![CDATA[ */
+		var element_pack_ajax_login_config = { "ajaxurl": "https:\/\/evahelp.by\/wp-admin\/admin-ajax.php", "language": "ru", "loadingmessage": "Sending user info, please wait...", "unknownerror": "Unknown error, make sure access is correct!" };
+		var ElementPackConfig = { "ajaxurl": "https:\/\/evahelp.by\/wp-admin\/admin-ajax.php", "nonce": "228dd3b819", "data_table": { "language": { "lengthMenu": "Show _MENU_ Entries", "info": "Showing _START_ to _END_ of _TOTAL_ entries", "search": "Search :", "sZeroRecords": "No matching records found", "paginate": { "previous": "Previous", "next": "Next" } } }, "contact_form": { "sending_msg": "Sending message please wait...", "captcha_nd": "Invisible captcha not defined!", "captcha_nr": "Could not get invisible captcha response!" }, "mailchimp": { "subscribing": "Subscribing you please wait..." }, "elements_data": { "sections": [], "columns": [], "widgets": [] } };
+		/* ]]> */
+	</script>
+	<script type="text/javascript" src="assets/js/bdt-uikit.min.js" id="bdt-uikit-js"></script>
+	<script type="text/javascript" src="assets/js/webpack.runtime.min.js" id="elementor-webpack-runtime-js"></script>
+	<script type="text/javascript" src="assets/js/frontend-modules.min.js" id="elementor-frontend-modules-js"></script>
+	<script type="text/javascript" src="assets/js/waypoints.min.js" id="elementor-waypoints-js"></script>
+	<script type="text/javascript" src="assets/js/core.min.js" id="jquery-ui-core-js"></script>
+	<script type="text/javascript" id="elementor-frontend-js-before">
+		var elementorFrontendConfig = { "environmentMode": { "edit": false, "wpPreview": false, "isScriptDebug": false }, "i18n": { "shareOnFacebook": "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u0432 Facebook", "shareOnTwitter": "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u0432 Twitter", "pinIt": "\u0417\u0430\u043f\u0438\u043d\u0438\u0442\u044c", "download": "\u0421\u043a\u0430\u0447\u0430\u0442\u044c", "downloadImage": "\u0421\u043a\u0430\u0447\u0430\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435", "fullscreen": "\u0412\u043e \u0432\u0435\u0441\u044c \u044d\u043a\u0440\u0430\u043d", "zoom": "\u0423\u0432\u0435\u043b\u0438\u0447\u0435\u043d\u0438\u0435", "share": "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f", "playVideo": "\u041f\u0440\u043e\u0438\u0433\u0440\u0430\u0442\u044c \u0432\u0438\u0434\u0435\u043e", "previous": "\u041d\u0430\u0437\u0430\u0434", "next": "\u0414\u0430\u043b\u0435\u0435", "close": "\u0417\u0430\u043a\u0440\u044b\u0442\u044c" }, "is_rtl": false, "breakpoints": { "xs": 0, "sm": 480, "md": 768, "lg": 1025, "xl": 1440, "xxl": 1600 }, "responsive": { "breakpoints": { "mobile": { "label": "\u0422\u0435\u043b\u0435\u0444\u043e\u043d", "value": 767, "default_value": 767, "direction": "max", "is_enabled": true }, "mobile_extra": { "label": "\u0422\u0435\u043b\u0435\u0444\u043e\u043d \u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435", "value": 880, "default_value": 880, "direction": "max", "is_enabled": false }, "tablet": { "label": "\u041f\u043b\u0430\u043d\u0448\u0435\u0442", "value": 1024, "default_value": 1024, "direction": "max", "is_enabled": true }, "tablet_extra": { "label": "\u041f\u043b\u0430\u043d\u0448\u0435\u0442 \u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435", "value": 1200, "default_value": 1200, "direction": "max", "is_enabled": false }, "laptop": { "label": "\u041d\u043e\u0443\u0442\u0431\u0443\u043a", "value": 1366, "default_value": 1366, "direction": "max", "is_enabled": false }, "widescreen": { "label": "\u0428\u0438\u0440\u043e\u043a\u043e\u0444\u043e\u0440\u043c\u0430\u0442\u043d\u044b\u0435", "value": 2400, "default_value": 2400, "direction": "min", "is_enabled": false } } }, "version": "3.9.2", "is_static": false, "experimentalFeatures": { "e_dom_optimization": true, "e_optimized_assets_loading": true, "a11y_improvements": true, "e_import_export": true, "e_hidden_wordpress_widgets": true, "theme_builder_v2": true, "landing-pages": true, "elements-color-picker": true, "favorite-widgets": true, "admin-top-bar": true, "kit-elements-defaults": true, "page-transitions": true, "notes": true, "form-submissions": true, "e_scroll_snap": true }, "urls": { "assets": "https:\/\/evahelp.by\/wp-content\/plugins\/elementor\/assets\/" }, "settings": { "page": [], "editorPreferences": [] }, "kit": { "active_breakpoints": ["viewport_mobile", "viewport_tablet"], "global_image_lightbox": "yes", "lightbox_enable_counter": "yes", "lightbox_enable_fullscreen": "yes", "lightbox_enable_zoom": "yes", "lightbox_enable_share": "yes", "lightbox_title_src": "title", "lightbox_description_src": "description" }, "post": { "id": 39, "title": "%D0%A1%D0%BB%D1%83%D0%B6%D0%B1%D0%B0%20%D1%8D%D0%B2%D0%B0%D0%BA%D1%83%D0%B0%D1%86%D0%B8%D0%B8%20%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D0%B5%D0%B9", "excerpt": "", "featuredImage": false } };
+	</script>
+	<script type="text/javascript" src="assets/js/frontend.min.js" id="elementor-frontend-js"></script><span
+		id="elementor-device-mode" class="elementor-screen-only"></span>
+	<script type="text/javascript" src="assets/js/ep-advanced-image-gallery.min.js"
+		id="ep-advanced-image-gallery-js"></script>
+	<script type="text/javascript" src="assets/js/ep-review-card-carousel.min.js"
+		id="ep-review-card-carousel-js"></script>
+	<script type="text/javascript" src="assets/js/ep-advanced-heading.min.js" id="ep-advanced-heading-js"></script>
+	<script type="text/javascript" src="assets/js/helper.min.js" id="element-pack-helper-js"></script>
+	<script type="text/javascript" src="assets/js/webpack-pro.runtime.min.js"
+		id="elementor-pro-webpack-runtime-js"></script>
+	<script type="text/javascript" src="assets/js/regenerator-runtime.min.js" id="regenerator-runtime-js"></script>
+	<script type="text/javascript" src="assets/js/wp-polyfill.min.js" id="wp-polyfill-js"></script>
+	<script type="text/javascript" src="assets/js/hooks.min.js" id="wp-hooks-js"></script>
+	<script type="text/javascript" src="assets/js/i18n.min.js" id="wp-i18n-js"></script>
+	<script type="text/javascript" id="wp-i18n-js-after">
+		wp.i18n.setLocaleData({ 'text direction\u0004ltr': ['ltr'] });
+	</script>
+	<script type="text/javascript" id="elementor-pro-frontend-js-before">
+		var ElementorProFrontendConfig = { "ajaxurl": "https:\/\/evahelp.by\/wp-admin\/admin-ajax.php", "nonce": "afd2fbdd14", "urls": { "assets": "https:\/\/evahelp.by\/wp-content\/plugins\/elementor-pro\/assets\/", "rest": "https:\/\/evahelp.by\/wp-json\/" }, "shareButtonsNetworks": { "facebook": { "title": "Facebook", "has_counter": true }, "twitter": { "title": "Twitter" }, "linkedin": { "title": "LinkedIn", "has_counter": true }, "pinterest": { "title": "Pinterest", "has_counter": true }, "reddit": { "title": "Reddit", "has_counter": true }, "vk": { "title": "VK", "has_counter": true }, "odnoklassniki": { "title": "OK", "has_counter": true }, "tumblr": { "title": "Tumblr" }, "digg": { "title": "Digg" }, "skype": { "title": "Skype" }, "stumbleupon": { "title": "StumbleUpon", "has_counter": true }, "mix": { "title": "Mix" }, "telegram": { "title": "Telegram" }, "pocket": { "title": "Pocket", "has_counter": true }, "xing": { "title": "XING", "has_counter": true }, "whatsapp": { "title": "WhatsApp" }, "email": { "title": "Email" }, "print": { "title": "Print" } }, "facebook_sdk": { "lang": "ru_RU", "app_id": "" }, "lottie": { "defaultAnimationUrl": "https:\/\/evahelp.by\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json" } };
+	</script>
+	<script type="text/javascript" src="assets/js/frontend.min_6d1455fc.js" id="elementor-pro-frontend-js"></script>
+	<script type="text/javascript" src="assets/js/elements-handlers.min.js" id="pro-elements-handlers-js"></script><svg
+		style="display: none;" class="e-font-icon-svg-symbols"></svg>
+	<script src="assets/js/swiper.min.js"></script>
 </head>
 
-<body>
-    <div class="container">
-        <div class="navbar">
-            <button>Регистрация товаров</button>
-            <button style="background-color: #00000059;">Отчёты</button>
-            <button style="background-color: #00000059;">Склад</button>
-            <button style="background-color: #00000059;">Список инструментов</button>
-            <button style="background-color: #00000059;">Консультанты</button>
-        </div>
-        <div class="controls">
-            <button class="green" id="openPopup">Добавить заказ</button>
-            <button style="background-color: #00000059;">Документы</button>
-            <button style="background-color: #00000059;">Просмотр товаров</button>
-            <button style="background-color: #00000059; color: #000;" class="green">Закрыть аренду</button>
-            <button style="background-color: #00000059;">Касса</button>
-            <button class="red">Пометить/Снять на удаление</button>
-            <button class="change-number btn" >Изменить номер</button>
-            <button class="change-payment-type btn">Изменить тип оплаты</button>
-            <button style="background-color: #00000059;">Изменить консультанта</button>
-            <button style="background-color: #00000059; color: #000;" class="red">Закрыть смену</button>
-        </div>
-        <div class="table-container">
-            <table class="orders">
-                <thead>
-                    <tr>
-                        <th>Номер
-                            <select name="numberFilter" id="numberFilter">
-                                <option value="">Все</option>
-                            </select>
-                        </th>
-                        <th>Создал
-                            <select name="creatorFilter" id="creatorFilter">
-                                <option value="">Все</option>
-                            </select>
-                        </th>
-                        <th>Консультант
-                            <select name="consultantFilter" id="consultantFilter">
-                                <option value="">Все</option>
-                            </select>
-                        </th>
-                        <th>Тип оплаты
-                            <select name="paymentTypeFilter" id="paymentTypeFilter">
-                                <option value="">Все</option>
-                            </select>
-                        </th>
-                        <th>Статус
-                            <select name="statusFilter" id="statusFilter">
-                                <option value="">Все</option>
-                            </select>
-                        </th>
-                        <th>Удалить
-                            <select name="deleteFilter" id="deleteFilter">
-                                <option value="">Все</option>
-                            </select>
-                        </th>
-                        <th>Скидки
-                            <select name="discountsFilter" id="discountsFilter">
-                                <option value="">Все</option>
-                            </select>
-                        </th>
-                        <th>Товары
-                            <select name="productsFilter" id="productsFilter">
-                                <option value="">Все</option>
-                            </select>
-                        </th>
-                        <th>Ф.И.О
-                            <select name="fullNameFilter" id="fullNameFilter">
-                                <option value="">Все</option>
-                            </select>
-                        </th>
-                        <th>Выдано
-                            <select name="issuedFilter" id="issuedFilter">
-                                <option value="">Все</option>
-                            </select>
-                        </th>
-                        <th>Дата приёма
-                            <select name="receiptDateFilter" id="receiptDateFilter">
-                                <option value="">Все</option>
-                            </select>
-                        </th>
-                        <th>Оплачено
-                            <select name="paidFilter" id="paidFilter">
-                                <option value="">Все</option>
-                            </select>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody">
-                    <tr>
-                        <td>241158</td>
-                        <td>Кассир</td>
-                        <td>Иван</td>
-                        <td>Наличные</td>
-                        <td>закрыт</td>
-                        <td>Нет</td>
-                        <td>10%</td>
-                        <td>Лестница KRAUSE 3*9</td>
-                        <td>Мирзаканов Шохсултан Д.</td>
-                        <td>16:30</td>
-                        <td>2024-06-05 16:30</td>
-                        <td>15000</td>
-                    </tr>
-                    <tr>
-                        <td>241158</td>
-                        <td>Кассир</td>
-                        <td>Иван</td>
-                        <td>Наличные</td>
-                        <td>закрыт</td>
-                        <td>Нет</td>
-                        <td>10%</td>
-                        <td>Лестница KRAUSE 3*9</td>
-                        <td>Мирзаканов Шохсултан Д.</td>
-                        <td>16:30</td>
-                        <td>2024-06-05 16:30</td>
-                        <td>15000</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>неКассир</td>
-                        <td>нИван</td>
-                        <td>Наличные</td>
-                        <td>закрыт</td>
-                        <td>Нет</td>
-                        <td>10%</td>
-                        <td>Лестница KRAUSE 3*9</td>
-                        <td>Мирзаканов Шохсултан Д.</td>
-                        <td>16:30</td>
-                        <td>2024-06-05 16:30</td>
-                        <td>15000</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Кассир</td>
-                        <td>неИван</td>
-                        <td>Наличные</td>
-                        <td>закрыт</td>
-                        <td>Нет</td>
-                        <td>10%</td>
-                        <td>Лестница KRAUSE 3*9</td>
-                        <td>Мирзаканов Шохсултан Д.</td>
-                        <td>16:30</td>
-                        <td>2024-06-05 16:30</td>
-                        <td>15000</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Кассир</td>
-                        <td>неИван</td>
-                        <td>Наличные</td>
-                        <td>закрыт</td>
-                        <td>Нет</td>
-                        <td>10%</td>
-                        <td>Лестница KRAUSE 3*9</td>
-                        <td>Мирзаканов Шохсултан Д.</td>
-                        <td>16:30</td>
-                        <td>2024-06-05 16:30</td>
-                        <td>15000</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<body data-rsssl="1" id="the7-body"
+	class="home page-template-default page page-id-39 wp-custom-logo wp-embed-responsive the7-core-ver-2.5.7.1 non-logged-in title-off dt-responsive-on right-mobile-menu-close-icon ouside-menu-close-icon mobile-hamburger-close-bg-enable mobile-hamburger-close-bg-hover-enable fade-medium-mobile-menu-close-icon fade-medium-menu-close-icon accent-gradient srcset-enabled btn-flat custom-btn-color custom-btn-hover-color floating-mobile-menu-icon top-header first-switch-logo-left first-switch-menu-right second-switch-logo-left second-switch-menu-right right-mobile-menu layzr-loading-on popup-message-style the7-ver-10.11.0 elementor-default elementor-kit-6 elementor-page elementor-page-39 no-mobile closed-overlay-mobile-header e--ua-blink e--ua-chrome e--ua-webkit"
+	data-elementor-device-mode="widescreen">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+		<defs>
+			<filter id="wp-duotone-dark-grayscale">
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+				</feColorMatrix>
+				<feComponentTransfer color-interpolation-filters="sRGB">
+					<feFuncR type="table" tableValues="0 0.49803921568627"></feFuncR>
+					<feFuncG type="table" tableValues="0 0.49803921568627"></feFuncG>
+					<feFuncB type="table" tableValues="0 0.49803921568627"></feFuncB>
+					<feFuncA type="table" tableValues="1 1"></feFuncA>
+				</feComponentTransfer>
+				<feComposite in2="SourceGraphic" operator="in"></feComposite>
+			</filter>
+		</defs>
+	</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+		<defs>
+			<filter id="wp-duotone-grayscale">
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+				</feColorMatrix>
+				<feComponentTransfer color-interpolation-filters="sRGB">
+					<feFuncR type="table" tableValues="0 1"></feFuncR>
+					<feFuncG type="table" tableValues="0 1"></feFuncG>
+					<feFuncB type="table" tableValues="0 1"></feFuncB>
+					<feFuncA type="table" tableValues="1 1"></feFuncA>
+				</feComponentTransfer>
+				<feComposite in2="SourceGraphic" operator="in"></feComposite>
+			</filter>
+		</defs>
+	</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+		<defs>
+			<filter id="wp-duotone-purple-yellow">
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+				</feColorMatrix>
+				<feComponentTransfer color-interpolation-filters="sRGB">
+					<feFuncR type="table" tableValues="0.54901960784314 0.98823529411765"></feFuncR>
+					<feFuncG type="table" tableValues="0 1"></feFuncG>
+					<feFuncB type="table" tableValues="0.71764705882353 0.25490196078431"></feFuncB>
+					<feFuncA type="table" tableValues="1 1"></feFuncA>
+				</feComponentTransfer>
+				<feComposite in2="SourceGraphic" operator="in"></feComposite>
+			</filter>
+		</defs>
+	</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+		<defs>
+			<filter id="wp-duotone-blue-red">
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+				</feColorMatrix>
+				<feComponentTransfer color-interpolation-filters="sRGB">
+					<feFuncR type="table" tableValues="0 1"></feFuncR>
+					<feFuncG type="table" tableValues="0 0.27843137254902"></feFuncG>
+					<feFuncB type="table" tableValues="0.5921568627451 0.27843137254902"></feFuncB>
+					<feFuncA type="table" tableValues="1 1"></feFuncA>
+				</feComponentTransfer>
+				<feComposite in2="SourceGraphic" operator="in"></feComposite>
+			</filter>
+		</defs>
+	</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+		<defs>
+			<filter id="wp-duotone-midnight">
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+				</feColorMatrix>
+				<feComponentTransfer color-interpolation-filters="sRGB">
+					<feFuncR type="table" tableValues="0 0"></feFuncR>
+					<feFuncG type="table" tableValues="0 0.64705882352941"></feFuncG>
+					<feFuncB type="table" tableValues="0 1"></feFuncB>
+					<feFuncA type="table" tableValues="1 1"></feFuncA>
+				</feComponentTransfer>
+				<feComposite in2="SourceGraphic" operator="in"></feComposite>
+			</filter>
+		</defs>
+	</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+		<defs>
+			<filter id="wp-duotone-magenta-yellow">
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+				</feColorMatrix>
+				<feComponentTransfer color-interpolation-filters="sRGB">
+					<feFuncR type="table" tableValues="0.78039215686275 1"></feFuncR>
+					<feFuncG type="table" tableValues="0 0.94901960784314"></feFuncG>
+					<feFuncB type="table" tableValues="0.35294117647059 0.47058823529412"></feFuncB>
+					<feFuncA type="table" tableValues="1 1"></feFuncA>
+				</feComponentTransfer>
+				<feComposite in2="SourceGraphic" operator="in"></feComposite>
+			</filter>
+		</defs>
+	</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+		<defs>
+			<filter id="wp-duotone-purple-green">
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+				</feColorMatrix>
+				<feComponentTransfer color-interpolation-filters="sRGB">
+					<feFuncR type="table" tableValues="0.65098039215686 0.40392156862745"></feFuncR>
+					<feFuncG type="table" tableValues="0 1"></feFuncG>
+					<feFuncB type="table" tableValues="0.44705882352941 0.4"></feFuncB>
+					<feFuncA type="table" tableValues="1 1"></feFuncA>
+				</feComponentTransfer>
+				<feComposite in2="SourceGraphic" operator="in"></feComposite>
+			</filter>
+		</defs>
+	</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+		<defs>
+			<filter id="wp-duotone-blue-orange">
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+				</feColorMatrix>
+				<feComponentTransfer color-interpolation-filters="sRGB">
+					<feFuncR type="table" tableValues="0.098039215686275 1"></feFuncR>
+					<feFuncG type="table" tableValues="0 0.66274509803922"></feFuncG>
+					<feFuncB type="table" tableValues="0.84705882352941 0.41960784313725"></feFuncB>
+					<feFuncA type="table" tableValues="1 1"></feFuncA>
+				</feComponentTransfer>
+				<feComposite in2="SourceGraphic" operator="in"></feComposite>
+			</filter>
+		</defs>
+	</svg><!-- The7 10.11.0 -->
 
-    <div class="popup-overlay" id="popupOverlay">
-        <div class="popup">
-            <button class="close-popup" id="closePopup">&times;</button>
-            <form class="form">
-                <h2>Регистрация товаров</h2>
-                <div class="form-content">
-                    <label>Вид товара(1): <input type="text" name="productType" value="Test"></label>
-                    <label>Сер-ном: <input type="text" name="serialNumber" value="01010101"></label>
-                </div>
-                <div class="form-client">
-                    <div class="left">
-                        <label>ИИН: <input type="text" name="iin" value="123456789"></label>
-                        <label>Ф.И.О: <input type="text" name="fullName" value="Иванов Иван Иванович"></label>
-                        <label>№ удостоверения: <input type="text" name="idNumber" value="123456"></label>
-                        <label>Выдано/участок: <input type="text" name="issuedBy" value="МВД РФ"></label>
-                        <label>Адрес: <input type="text" name="address" value="Москва, ул. Ленина, 1"></label>
-                    </div>
-                    <div class="right">
-                        <label>Телефон: <input type="text" name="phone" value="+7 123 456 78 90"></label>
-                        <label>Дата выдачи: <input type="datetime-local" name="issueDate"
-                                value="2022-01-01T12:00:00"></label>
-                        <label>Дата сдачи: <input type="datetime-local" name="returnDate"
-                                value="2022-01-15T12:00:00"></label>
-                        <div class="days-control">
-                            <label>Доп. дни:</label>
-                            <div class="day-cont">
-                                <div class="day-toggler">
-                                    <button type="button" class="btn minus" onclick="changeDays(-1)">-</button>
-                                    <input type="number" id="additional-days" value="1" pattern="[0-9]*">
-                                    <button type="button" class="btn plus" onclick="changeDays(1)">+</button>
-                                </div>
+	<div id="page" class="closed-mobile-header">
+		<a class="skip-link screen-reader-text" href="#content">Перейти к содержанию</a>
 
-                                <div class="day-btn">
-                                    <button type="button" class="btn" onclick="setDays(10)">+10</button>
-                                    <button type="button" class="btn" onclick="setDays(20)">+20</button>
-                                    <button type="button" class="btn" onclick="setDays(30)">+30</button>
-                                </div>
-                            </div>
-                        </div>
-                        <label>Оплачено: <input type="text" name="paid" value="1000"></label>
-                        <label>Долг: <input type="text" name="debt" value="0"></label>
-                        <label>Тип оплаты: <input type="text" name="paymentType" value="Наличные"></label>
-                        <label>Консультант: <input type="text" name="consultant" value="Иванов Иван Иванович"></label>
-                    </div>
-                </div>
-                <div class="form-discont">
-                    <label>Применить скидку:
-                        <select name="discountType">
-                            <option>4+1</option>
-                            <option>10+3</option>
-                            <option>Спец цена</option>
-                            <option>Сброс</option>
-                        </select>
+		<div class="masthead classic-header justify bg-behind-menu widgets full-height shadow-decoration shadow-mobile-header-decoration small-mobile-menu-icon dt-parent-menu-clickable show-sub-menu-on-hover show-device-logo show-mobile-logo"
+			role="banner">
 
-                    </label>
-                    <br>
-                    <label> Общая сумма товаров (тг)
-                        <input type="number" min="0" value="100500" name="discount"></label>
-                </div>
+			<!-- <div class="top-bar full-width-line top-bar-line-hide top-bar-empty">
+				<div class="top-bar-bg"></div>
+				<div class="mini-widgets left-widgets">
+					<div
+						class="text-area hide-on-desktop in-top-bar hide-on-first-switch show-on-second-switch display-none">
+						<p><a href="{offer}"><img src="assets/img/logo.png" alt="" width="100%" height=""></a></p>
+					</div>
+					<div
+						class="text-area hide-on-desktop in-top-bar-left show-on-first-switch hide-on-second-switch display-none">
+						<p><a href="{offer}"><img src="assets/img/logo.png" alt="" width="100%" height=""></a></p>
+					</div>
+				</div>
+				<div class="right-widgets mini-widgets">
+					<div class="text-area hide-on-desktop in-top-bar-left in-top-bar display-none">
+						<p><a href="{offer}"><img src="assets/img/logo.png" alt="" width="100%" height=""></a></p>
+					</div>
+				</div>
+			</div> -->
 
-                <div class="btn-cont">
-                    <button type="submit">Сохранить</button>
-                    <button type="reset">Сброс</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div id="no-data-message" style="display: none;text-align: center;">Данных соответствующих этим условиям нет</div>
+			<header class="header-bar">
 
-    <script src="script.js"></script>
+				<div class="branding">
+					<div id="site-title" class="assistive-text">Служба эвакуации автомобилей</div>
+					<div id="site-description" class="assistive-text"></div>
+					<a class="" href="{offer}">
+						<img class=" preload-me" src="./logo.png" width="299" height="144" sizes="299px"
+							alt="Служба эвакуации автомобилей"></a>
+					<div class="mini-widgets">
+						<nav class="navigation">
+
+							<ul id="primary-menu"
+								class="main-nav underline-decoration l-to-r-line outside-item-remove-margin"
+								role="menubar">
+								<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-39 current_page_item menu-item-103 act first last depth-0"
+									role="presentation"><a href="{offer}" data-level="1" role="menuitem"><span
+											class="menu-item-text"><span class="menu-text">Служба эвакуации
+												автомобилей</span><i class="underline"></i></span></a></li>
+							</ul>
+
+						</nav>
+					</div>
+					<div class="mini-widgets">
+						<a href="tel:+77772967627"
+							class="mini-contacts phone show-on-desktop near-logo-first-switch near-logo-second-switch first last">
+							<i class="fa-fw icomoon-the7-font-the7-phone-02"></i>
+							+7 777 296 7627
+						</a>
+						<a href="tel:+77772545581"
+							class="ml-10 mini-contacts phone show-on-desktop near-logo-first-switch near-logo-second-switch first last">
+							+7 777 254 5581
+						</a>
+					</div>
+				</div>
 
 
-    <style>
-        .hidden {
-            display: none;
-        }
-    </style>
+
+			</header>
+
+			<div class="mobile-header-bar">
+				<div class="mobile-navigation"><a href="#" class="dt-mobile-menu-icon floating-btn"
+						aria-label="Mobile menu icon">
+						<div class="lines-button "><span class="menu-line"></span><span class="menu-line"></span><span
+								class="menu-line"></span></div>
+					</a><a href="#" class="dt-mobile-menu-icon" aria-label="Mobile menu icon">
+						<div class="lines-button "><span class="menu-line"></span><span class="menu-line"></span><span
+								class="menu-line"></span></div>
+					</a></div>
+				<div class="mobile-mini-widgets"><a href="tel:+77772967627"
+						class="mini-contacts phone show-on-desktop near-logo-first-switch near-logo-second-switch show-on-first-switch"><i
+							class="fa-fw icomoon-the7-font-the7-phone-02"></i>+7 777 296 7627</a><a
+						href="tel:+375292726527"
+						class="mini-contacts phone show-on-desktop near-logo-first-switch near-logo-second-switch show-on-second-switch"><i
+							class="fa-fw icomoon-the7-font-the7-phone-02"></i>+375292726527</a></div>
+				<div class="mobile-branding"><a class="" href="{offer}"><img class=" preload-me"
+							src="assets/img/logo.png" width="299" height="144" sizes="299px"
+							alt="Служба эвакуации автомобилей"></a></div>
+			</div>
+		</div>
+		<div class="dt-mobile-header mobile-menu-show-divider dt-parent-menu-clickable">
+			<div class="mobile-header-scrollbar-wrap">
+				<div class="dt-close-mobile-menu-icon">
+					<div class="close-line-wrap"><span class="close-line"></span><span class="close-line"></span><span
+							class="close-line"></span></div>
+				</div>
+				<ul id="mobile-menu" class="mobile-main-nav" role="menubar">
+					<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-39 current_page_item menu-item-103 act first last depth-0"
+						role="presentation"><a href="{offer}" data-level="1" role="menuitem"><span
+								class="menu-item-text"><span class="menu-text">Служба эвакуации
+									автомобилей</span></span></a></li>
+				</ul>
+				<div class="mobile-mini-widgets-in-menu first-switch-no-widgets second-switch-no-widgets"></div>
+			</div>
+		</div>
+
+
+
+		<div id="main" class="sidebar-none sidebar-divider-vertical">
+
+
+			<div class="main-gradient"></div>
+			<div class="wf-wrap">
+				<div class="wf-container-main">
+
+
+
+
+					<div id="content" class="content" role="main">
+
+						<div data-elementor-type="wp-page" data-elementor-id="39" class="elementor elementor-39">
+							<section
+								class="elementor-section elementor-top-section elementor-element elementor-element-40898f07 elementor-section-full_width elementor-section-height-min-height elementor-section-stretched elementor-section-height-default elementor-section-items-middle"
+								data-id="40898f07" data-element_type="section"
+								data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}"
+								style="width: 1920px; left: -360px;">
+								<div class="elementor-background-overlay"></div>
+								<div class="elementor-container elementor-column-gap-no">
+									<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-79ba0619"
+										data-id="79ba0619" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-661e360a elementor-widget elementor-widget-heading"
+												data-id="661e360a" data-element_type="widget"
+												data-widget_type="heading.default">
+												<div class="elementor-widget-container">
+													<h2 class="elementor-heading-title elementor-size-default">Служба
+														эвакуации автомобилей</h2>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-1d81dd5d elementor-align-center elementor-hidden-mobile elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+												data-id="1d81dd5d" data-element_type="widget"
+												data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check"></i> </span>
+															<span class="elementor-icon-list-text">Цена
+																договорная</span>
+														</li>
+
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true"
+																	class="fas fa-exclamation-circle"></i> </span>
+															<span class="elementor-icon-list-text">Ночная эвакуация
+																оплачивается по отдельному тарифу.</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-9ea070d elementor-align-center elementor-hidden-desktop elementor-hidden-tablet elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+												data-id="9ea070d" data-element_type="widget"
+												data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check"></i> </span>
+															<span class="elementor-icon-list-text">Цена
+																договорная</span>
+														</li>
+
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true"
+																	class="fas fa-exclamation-circle"></i> </span>
+															<span class="elementor-icon-list-text">Ночная эвакуация
+																оплачивается</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">по отдельному
+																тарифу.</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-4c28dd9a elementor-align-center elementor-widget elementor-widget-button"
+												data-id="4c28dd9a" data-element_type="widget"
+												data-widget_type="button.default">
+												<div class="elementor-widget-container">
+													<div class="elementor-button-wrapper">
+														<a href="tel:+77772967627"
+															class="elementor-button-link elementor-button elementor-size-md"
+															role="button">
+															<span class="elementor-button-content-wrapper">
+																<span
+																	class="elementor-button-icon elementor-align-icon-left">
+																	<i aria-hidden="true"
+																		class=" icomoon-the7-font-the7-phone-02"></i>
+																</span>
+																<span class="elementor-button-text">ВЫЗВАТЬ
+																	ЭВАКУАТОР</span>
+															</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section
+								class="elementor-section elementor-top-section elementor-element elementor-element-5e303e2a elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+								data-id="5e303e2a" data-element_type="section">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-65c31abe"
+										data-id="65c31abe" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-1aef061a elementor-widget elementor-widget-heading"
+												data-id="1aef061a" data-element_type="widget"
+												data-widget_type="heading.default">
+												<div class="elementor-widget-container">
+													<p class="elementor-heading-title elementor-size-default">Эвакуируем
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section
+								class="elementor-section elementor-top-section elementor-element elementor-element-1d436b3b elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+								data-id="1d436b3b" data-element_type="section">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-28d334b6"
+										data-id="28d334b6" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-307ead2d elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-image-box"
+												data-id="307ead2d" data-element_type="widget"
+												data-widget_type="image-box.default">
+												<div class="elementor-widget-container">
+													<div class="elementor-image-box-wrapper">
+														<figure class="elementor-image-box-img"><img decoding="async"
+																width="100" height="100" src="assets/img/1.png"
+																class="elementor-animation-grow attachment-full size-full wp-image-121"
+																alt="" loading="lazy"></figure>
+														<div class="elementor-image-box-content">
+															<h3 class="elementor-image-box-title">Легковые Авто</h3>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-484080de"
+										data-id="484080de" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-2b3ee76b elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-image-box"
+												data-id="2b3ee76b" data-element_type="widget"
+												data-widget_type="image-box.default">
+												<div class="elementor-widget-container">
+													<div class="elementor-image-box-wrapper">
+														<figure class="elementor-image-box-img"><img decoding="async"
+																width="100" height="100" src="assets/img/2.png"
+																class="elementor-animation-grow attachment-full size-full wp-image-122"
+																alt="" loading="lazy"></figure>
+														<div class="elementor-image-box-content">
+															<h3 class="elementor-image-box-title">Мотоциклы</h3>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-2634a29a"
+										data-id="2634a29a" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-32086569 elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-image-box"
+												data-id="32086569" data-element_type="widget"
+												data-widget_type="image-box.default">
+												<div class="elementor-widget-container">
+													<div class="elementor-image-box-wrapper">
+														<figure class="elementor-image-box-img"><img decoding="async"
+																width="100" height="100" src="assets/img/3.png"
+																class="elementor-animation-grow attachment-full size-full wp-image-123"
+																alt="" loading="lazy"></figure>
+														<div class="elementor-image-box-content">
+															<h3 class="elementor-image-box-title">Минивены</h3>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-5f07678d"
+										data-id="5f07678d" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-229669d9 elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-image-box"
+												data-id="229669d9" data-element_type="widget"
+												data-widget_type="image-box.default">
+												<div class="elementor-widget-container">
+													<div class="elementor-image-box-wrapper">
+														<figure class="elementor-image-box-img"><img decoding="async"
+																width="100" height="100" src="assets/img/4.png"
+																class="elementor-animation-grow attachment-full size-full wp-image-124"
+																alt="" loading="lazy"></figure>
+														<div class="elementor-image-box-content">
+															<h3 class="elementor-image-box-title">Спецтехнику</h3>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section
+								class="elementor-section elementor-top-section elementor-element elementor-element-fd7a0a0 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+								data-id="fd7a0a0" data-element_type="section">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-bad41e7"
+										data-id="bad41e7" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-9b1478b elementor-align-center elementor-hidden-mobile elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+												data-id="9b1478b" data-element_type="widget"
+												data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true"
+																	class="fas fa-exclamation-circle"></i> </span>
+															<span class="elementor-icon-list-text">Ночная эвакуация
+																оплачивается по отдельному тарифу.</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-1ba92c8 elementor-align-center elementor-hidden-desktop elementor-hidden-tablet elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+												data-id="1ba92c8" data-element_type="widget"
+												data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true"
+																	class="fas fa-exclamation-circle"></i> </span>
+															<span class="elementor-icon-list-text">Ночная
+																эвакуация</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">оплачивается по
+																отдельному тарифу.</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section
+								class="elementor-section elementor-top-section elementor-element elementor-element-5dda330e elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+								data-id="5dda330e" data-element_type="section">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-22b85acd"
+										data-id="22b85acd" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-5aea8f4 elementor-widget elementor-widget-heading"
+												data-id="5aea8f4" data-element_type="widget"
+												data-widget_type="heading.default">
+												<div class="elementor-widget-container">
+													<p class="elementor-heading-title elementor-size-default">Наши
+														преимущества</p>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-751514ca elementor-align-center elementor-mobile-align-center bdt-content-position--left elementor-widget elementor-widget-bdt-fancy-list"
+												data-id="751514ca" data-element_type="widget"
+												data-widget_type="bdt-fancy-list.default">
+												<div class="elementor-widget-container">
+													<div class="bdt-fancy-list">
+														<ul class="bdt-list custom-list-group">
+															<li>
+																<div class="bdt-list-wrap">
+																	<div class="bdt-flex  flex-wrap">
+																		<div class="list-text ">
+																			<h4 class="bdt-list-title">
+																				Опыт более 15 лет </h4>
+																			<p class="list-text-des"> Поможем быстро и
+																				безопасно перевезти аварийный авто с
+																				заблокированными колесами</p>
+																		</div>
+																	</div>
+																</div>
+															</li>
+															<li>
+																<div class="bdt-list-wrap">
+																	<div class="bdt-flex  flex-wrap">
+																		<div class="list-text ">
+																			<h4 class="bdt-list-title">
+																				Работаем круглосуточно 24/7 </h4>
+																			<p class="list-text-des"> Погрузка/Выгрузка
+																				автотранспорта</p>
+																		</div>
+																	</div>
+																</div>
+															</li>
+															<li>
+																<div class="bdt-list-wrap">
+																	<div class="bdt-flex  flex-wrap">
+																		<div class="list-text ">
+																			<h4 class="bdt-list-title">
+																				Гибкая транспортировка</h4>
+																			<p class="list-text-des"> Возможность
+																				погрузки/выгрузки двух авто одновременно
+																			</p>
+																		</div>
+																	</div>
+																</div>
+															</li>
+															<li>
+																<div class="bdt-list-wrap">
+																	<div class="bdt-flex  flex-wrap">
+																		<div class="list-text ">
+																			<h4 class="bdt-list-title">
+																				Грузоподъемность </h4>
+																			<p class="list-text-des"> 3.5 ТОНН - 5 ТОНН
+																			</p>
+																		</div>
+																	</div>
+																</div>
+															</li>
+															<li>
+																<div class="bdt-list-wrap">
+																	<div class="bdt-flex  flex-wrap">
+																		<div class="list-text ">
+																			<h4 class="bdt-list-title">
+																				Высокий кредит доверия </h4>
+																			<p class="list-text-des"> благодаря
+																				качественному сервису</p>
+																		</div>
+																	</div>
+																</div>
+															</li>
+															<li>
+																<div class="bdt-list-wrap">
+																	<div class="bdt-flex  flex-wrap">
+																		<div class="list-text ">
+																			<h4 class="bdt-list-title">
+																				Работаем по ВКО, РК и приграничной
+																				области РФ </h4>
+																			<p class="list-text-des"> </p>
+																		</div>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-554ce7a0 elementor-align-center elementor-widget elementor-widget-button"
+												data-id="554ce7a0" data-element_type="widget"
+												data-widget_type="button.default">
+												<div class="elementor-widget-container">
+													<div class="elementor-button-wrapper">
+														<a href="tel:+375292726527"
+															class="elementor-button-link elementor-button elementor-size-md"
+															role="button">
+															<span class="elementor-button-content-wrapper">
+																<span
+																	class="elementor-button-icon elementor-align-icon-left">
+																	<i aria-hidden="true"
+																		class=" icomoon-the7-font-the7-phone-02"></i>
+																</span>
+																<span class="elementor-button-text">ВЫЗВАТЬ
+																	ЭВАКУАТОР</span>
+															</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section
+								class="elementor-section elementor-top-section elementor-element elementor-element-2f741b34 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+								data-id="2f741b34" data-element_type="section">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7e55fe4a"
+										data-id="7e55fe4a" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-2a32e9bd elementor-widget elementor-widget-heading"
+												data-id="2a32e9bd" data-element_type="widget"
+												data-widget_type="heading.default">
+												<div class="elementor-widget-container">
+													<p class="elementor-heading-title elementor-size-default">Фото
+														галерея</p>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-5e6e5003 elementor-widget elementor-widget-bdt-advanced-image-gallery"
+												data-id="5e6e5003" data-element_type="widget"
+												data-widget_type="bdt-advanced-image-gallery.default">
+												<div class="elementor-widget-container">
+													<div id="bdt-avdg-5e6e5003"
+														class="bdt-ep-advanced-image-gallery bdt-ep-advanced-image-gallery-skin-default bdt-grid bdt-grid-small bdt-child-width-1-2 bdt-child-width-1-3@s bdt-child-width-1-3@m bdt-flex-top bdt-flex-wrap-top"
+														data-bdt-grid=" masonry: true"
+														data-bdt-lightbox="animation: slide; video-autoplay: true; autoplay: false;"
+														data-settings="{&quot;id&quot;:&quot;#bdt-avdg-5e6e5003&quot;,&quot;tiltShow&quot;:false}"
+														style="height: 651px;">
+
+														<div class="bdt-ep-advanced-image-gallery-item bdt-transition-toggle bdt-first-column"
+															style="transform: translateY(0px);">
+															<div
+																class="bdt-ep-advanced-image-gallery-inner bdt-image-mask">
+																<div
+																	class="bdt-ep-advanced-image-gallery-thumbnail bdt-transition-toggle">
+																	<img decoding="async" src="assets/img/1.jpeg"
+																		alt="1-1.jpg" class="jgalleryImage">
+																</div>
+																<div
+																	class="bdt-position-cover bdt-overlay bdt-overlay-default bdt-transition-fade">
+																	<div class="bdt-ep-advanced-image-gallery-content">
+																		<div
+																			class="bdt-ep-advanced-image-gallery-content-inner">
+
+																			<div
+																				class="bdt-flex-inline bdt-ep-advanced-image-gallery-item-link-wrapper">
+																				<a class="bdt-ep-advanced-image-gallery-item-link elementor-clickable icon-type-icon "
+																					data-elementor-open-lightbox="no"
+																					data-caption="" href="assets/img/1.jpeg">
+
+																					<span>
+																						<i class="ep-icon-plus-2"></i>
+																					</span>
+
+																				</a>
+																			</div>
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+
+														<div class="bdt-ep-advanced-image-gallery-item bdt-transition-toggle"
+															style="transform: translateY(0px);">
+															<div
+																class="bdt-ep-advanced-image-gallery-inner bdt-image-mask">
+																<div
+																	class="bdt-ep-advanced-image-gallery-thumbnail bdt-transition-toggle">
+																	<img decoding="async"
+																		src="assets/img/2.jpeg" alt="2-2.jpg"
+																		class="jgalleryImage">
+																</div>
+																<div
+																	class="bdt-position-cover bdt-overlay bdt-overlay-default bdt-transition-fade">
+																	<div class="bdt-ep-advanced-image-gallery-content">
+																		<div
+																			class="bdt-ep-advanced-image-gallery-content-inner">
+
+																			<div
+																				class="bdt-flex-inline bdt-ep-advanced-image-gallery-item-link-wrapper">
+																				<a class="bdt-ep-advanced-image-gallery-item-link elementor-clickable icon-type-icon "
+																					data-elementor-open-lightbox="no"
+																					data-caption="" href="assets/img/2.jpeg">
+
+																					<span>
+																						<i class="ep-icon-plus-2"></i>
+																					</span>
+
+																				</a>
+																			</div>
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+
+														<div class="bdt-ep-advanced-image-gallery-item bdt-transition-toggle"
+															style="transform: translateY(0px);">
+															<div
+																class="bdt-ep-advanced-image-gallery-inner bdt-image-mask">
+																<div
+																	class="bdt-ep-advanced-image-gallery-thumbnail bdt-transition-toggle">
+																	<img decoding="async"
+																		src="assets/img/3.jpeg" alt="3-4.jpg"
+																		class="jgalleryImage">
+																</div>
+																<div
+																	class="bdt-position-cover bdt-overlay bdt-overlay-default bdt-transition-fade">
+																	<div class="bdt-ep-advanced-image-gallery-content">
+																		<div
+																			class="bdt-ep-advanced-image-gallery-content-inner">
+
+																			<div
+																				class="bdt-flex-inline bdt-ep-advanced-image-gallery-item-link-wrapper">
+																				<a class="bdt-ep-advanced-image-gallery-item-link elementor-clickable icon-type-icon "
+																					data-elementor-open-lightbox="no"
+																					data-caption="" href="assets/img/3.jpeg">
+
+																					<span>
+																						<i class="ep-icon-plus-2"></i>
+																					</span>
+
+																				</a>
+																			</div>
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+
+														<div class="bdt-ep-advanced-image-gallery-item bdt-transition-toggle bdt-grid-margin bdt-first-column"
+															style="transform: translateY(-161px);">
+															<div
+																class="bdt-ep-advanced-image-gallery-inner bdt-image-mask">
+																<div
+																	class="bdt-ep-advanced-image-gallery-thumbnail bdt-transition-toggle">
+																	<img decoding="async"
+																		src="assets/img/4.jpeg" alt="4-2.jpg"
+																		class="jgalleryImage">
+																</div>
+																<div
+																	class="bdt-position-cover bdt-overlay bdt-overlay-default bdt-transition-fade">
+																	<div class="bdt-ep-advanced-image-gallery-content">
+																		<div
+																			class="bdt-ep-advanced-image-gallery-content-inner">
+
+																			<div
+																				class="bdt-flex-inline bdt-ep-advanced-image-gallery-item-link-wrapper">
+																				<a class="bdt-ep-advanced-image-gallery-item-link elementor-clickable icon-type-icon "
+																					data-elementor-open-lightbox="no"
+																					data-caption="" href="assets/img/4.jpeg">
+
+																					<span>
+																						<i class="ep-icon-plus-2"></i>
+																					</span>
+
+																				</a>
+																			</div>
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+
+														<div class="bdt-ep-advanced-image-gallery-item bdt-transition-toggle bdt-grid-margin"
+															style="transform: translateY(0px);">
+															<div
+																class="bdt-ep-advanced-image-gallery-inner bdt-image-mask">
+																<div
+																	class="bdt-ep-advanced-image-gallery-thumbnail bdt-transition-toggle">
+																	<img decoding="async"
+																		src="assets/images/image_2025-09-29_20-05-57.png" alt="5-1.jpg"
+																		class="jgalleryImage">
+																		<!-- <video src="assets/img/1.jpeg"></video> -->
+																</div>
+																<div
+																	class="bdt-position-cover bdt-overlay bdt-overlay-default bdt-transition-fade">
+																	<div class="bdt-ep-advanced-image-gallery-content">
+																		<div
+																			class="bdt-ep-advanced-image-gallery-content-inner">
+
+																			<div
+																				class="bdt-flex-inline bdt-ep-advanced-image-gallery-item-link-wrapper">
+																				<a class="bdt-ep-advanced-image-gallery-item-link elementor-clickable icon-type-icon "
+																					data-elementor-open-lightbox="no"
+																					data-caption="" href="assets/video/WhatsApp Video 2025-09-23 at 14.00.54.mp4">
+
+																					<span>
+																						<i class="ep-icon-plus-2"></i>
+																					</span>
+
+																				</a>
+																			</div>
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+														<div class="bdt-ep-advanced-image-gallery-item bdt-transition-toggle bdt-grid-margin"
+															style="transform: translateY(0px);">
+															<div
+																class="bdt-ep-advanced-image-gallery-inner bdt-image-mask">
+																<div
+																	class="bdt-ep-advanced-image-gallery-thumbnail bdt-transition-toggle">
+																	<img decoding="async"
+																		src="assets/images/image_2025-09-29_20-06-12.png" alt="5-1.jpg"
+																		class="jgalleryImage">
+																		<!-- <video src="assets/img/1.jpeg"></video> -->
+																</div>
+																<div
+																	class="bdt-position-cover bdt-overlay bdt-overlay-default bdt-transition-fade">
+																	<div class="bdt-ep-advanced-image-gallery-content">
+																		<div
+																			class="bdt-ep-advanced-image-gallery-content-inner">
+
+																			<div
+																				class="bdt-flex-inline bdt-ep-advanced-image-gallery-item-link-wrapper">
+																				<a class="bdt-ep-advanced-image-gallery-item-link elementor-clickable icon-type-icon "
+																					data-elementor-open-lightbox="no"
+																					data-caption="" href="assets/video/WhatsApp Video 2025-09-23 at 14.05.05.mp4">
+
+																					<span>
+																						<i class="ep-icon-plus-2"></i>
+																					</span>
+
+																				</a>
+																			</div>
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section
+								class="elementor-section elementor-top-section elementor-element elementor-element-7b968735 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+								data-id="7b968735" data-element_type="section">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1b14cbfe"
+										data-id="1b14cbfe" data-element_type="column">
+										<div
+											class="elementor-widget-wrap elementor-element-populated e-swiper-container">
+											<div class="elementor-element elementor-element-17ca0f5b elementor-widget elementor-widget-heading"
+												data-id="17ca0f5b" data-element_type="widget"
+												data-widget_type="heading.default">
+												<div class="elementor-widget-container">
+													<p class="elementor-heading-title elementor-size-default">Отзывы</p>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-6afb8cb5 bdt-item-match-height--yes bdt-review-img--top bdt-navigation-type-arrows bdt-carousel-style-carousel elementor-widget elementor-widget-bdt-review-card-carousel e-widget-swiper"
+												data-id="6afb8cb5" data-element_type="widget"
+												data-widget_type="bdt-review-card-carousel.default">
+												<div class="elementor-widget-container">
+													<div id="bdt-review-card-carousel-6afb8cb5"
+														class="bdt-arrows-align-center bdt-review-card-carousel"
+														data-settings="{&quot;autoplay&quot;:{&quot;delay&quot;:5000},&quot;loop&quot;:true,&quot;speed&quot;:500,&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20,&quot;effect&quot;:&quot;carousel&quot;,&quot;breakpoints&quot;:{&quot;767&quot;:{&quot;slidesPerView&quot;:2,&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:1},&quot;1023&quot;:{&quot;slidesPerView&quot;:3,&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:1}},&quot;navigation&quot;:{&quot;nextEl&quot;:&quot;#bdt-review-card-carousel-6afb8cb5 .bdt-navigation-next&quot;,&quot;prevEl&quot;:&quot;#bdt-review-card-carousel-6afb8cb5 .bdt-navigation-prev&quot;},&quot;pagination&quot;:{&quot;el&quot;:&quot;#bdt-review-card-carousel-6afb8cb5 .swiper-pagination&quot;,&quot;type&quot;:&quot;&quot;,&quot;clickable&quot;:&quot;true&quot;,&quot;dynamicBullets&quot;:false},&quot;scrollbar&quot;:{&quot;el&quot;:&quot;#bdt-review-card-carousel-6afb8cb5 .swiper-scrollbar&quot;,&quot;hide&quot;:&quot;true&quot;},&quot;coverflowEffect&quot;:{&quot;rotate&quot;:50,&quot;stretch&quot;:0,&quot;depth&quot;:100,&quot;modifier&quot;:1,&quot;slideShadows&quot;:true}}">
+														<div
+															class="swiper-container swiper-container-initialized swiper-container-horizontal">
+															<div class="swiper-wrapper"
+																style="transition-duration: 0ms; transform: translate3d(-2280px, 0px, 0px);">
+																<div class="bdt-ep-review-card-carousel-item swiper-slide swiper-slide-duplicate"
+																	data-swiper-slide-index="1"
+																	style="width: 360px; margin-right: 20px;">
+																	<div class="bdt-ep-review-card-carousel-content">
+																		<h3 class="bdt-ep-review-card-carousel-name">
+																			Ольга Петрова </h3>
+
+																		<div
+																			class="bdt-ep-review-card-carousel-rating bdt-flex-inline bdt-flex-middle bdt-star bdt-before">
+																			<span class="epsc-rating epsc-rating-5-0">
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																			</span>
+																		</div>
+
+																		<div class="bdt-ep-review-card-carousel-text">
+																			<p>Машина заглохла ночью на трассе под
+																				Риддером. Темно, холодно, одна. Очень
+																				страшно. Нашла эту службу в интернете,
+																				позвонила. Эвакуатор приехал в течение
+																				часа! Водитель Дмитрий – настоящий
+																				молодец. Не только быстро и аккуратно
+																				погрузил авто, но и помог успокоиться,
+																				предложил чай из термоса. Довез до
+																				Усть-Каменогорска до моего сервиса. Работали четко,
+																				без лишних слов и накруток. Цена
+																				фиксированная, как и обещали. Теперь
+																				только к вам!</p>
+																		</div>
+
+																	</div>
+																</div>
+																<div class="bdt-ep-review-card-carousel-item swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev"
+																	data-swiper-slide-index="2"
+																	style="width: 360px; margin-right: 20px;">
+																	<div class="bdt-ep-review-card-carousel-content">
+																		<h3 class="bdt-ep-review-card-carousel-name">
+																			Сергей Бородач </h3>
+
+																		<div
+																			class="bdt-ep-review-card-carousel-rating bdt-flex-inline bdt-flex-middle bdt-star bdt-before">
+																			<span class="epsc-rating epsc-rating-5-0">
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																			</span>
+																		</div>
+
+																		<div class="bdt-ep-review-card-carousel-text">
+																			<p>Утром, в пробке на трассе А-3, сгорел стартер.
+																				Встал в крайнем левом ряду, создал затор
+																				– кошмар! Вызвал эвакуатоп по телефону.
+																				Приехал парень по имени Дмитрий. Место
+																				было не удобное, но он ювелирно
+																				подъехал, за считанные минуты погрузил
+																				машину на платформу с лебедкой (благо,
+																				она у них мощная). Несмотря на гудки
+																				нетерпеливых, работал спокойно и
+																				профессионально. Отвез в сервис на пр.
+																				Независимости. Оперативность, сноровка и
+																				вежливость – на высоте! Цена за спасение
+																				в час пик – более чем адекватная.
+																				Спасибо Дмитрию!</p>
+																		</div>
+
+																	</div>
+																</div>
+																<div class="bdt-ep-review-card-carousel-item swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
+																	data-swiper-slide-index="3"
+																	style="width: 360px; margin-right: 20px;">
+																	<div class="bdt-ep-review-card-carousel-content">
+																		<h3 class="bdt-ep-review-card-carousel-name">
+																			Виктор Иванович </h3>
+
+																		<div
+																			class="bdt-ep-review-card-carousel-rating bdt-flex-inline bdt-flex-middle bdt-star bdt-before">
+																			<span class="epsc-rating epsc-rating-5-0">
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																			</span>
+																		</div>
+
+																		<div class="bdt-ep-review-card-carousel-text">
+																			<p>Возил внуков на выходные под Витебск. На
+																				обратном пути застучал мотор...
+																				Остановился, вызвал эвакуатор. Дорога
+																				неблизкая, но он прибыл в оговоренное
+																				время. Осмотрел машину, предложил
+																				попробовать долить масло (оказалось, оно
+																				было!), но я решил не рисковать и
+																				эвакуировать. Погрузка – чистое
+																				искусство! Довез аж до моего гаража в
+																				Восточно-Казахстанской области (Уськамен). По пути
+																				общался по-человечески. Рассчитались
+																				картой. Работают по всей стране, и это
+																				реально так! Цена за километраж –
+																				честная. Спасибо за надежность!</p>
+																		</div>
+
+																	</div>
+																</div>
+
+																<div class="bdt-ep-review-card-carousel-item swiper-slide swiper-slide-duplicate-next"
+																	data-swiper-slide-index="0"
+																	style="width: 360px; margin-right: 20px;">
+																	<div class="bdt-ep-review-card-carousel-content">
+																		<h3 class="bdt-ep-review-card-carousel-name">
+																			Андрей С. </h3>
+
+																		<div
+																			class="bdt-ep-review-card-carousel-rating bdt-flex-inline bdt-flex-middle bdt-star bdt-before">
+																			<span class="epsc-rating epsc-rating-5-0">
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																			</span>
+																		</div>
+
+																		<div class="bdt-ep-review-card-carousel-text">
+																			<p>Попал в небольшое ДТП на трассе А-2 под
+																				Уськаменом вечером. Машина не на ходу,
+																				нервы на пределе. Позвонил в эту службу
+																				–&nbsp; Андрей спокойно и четко все
+																				объяснил, успокоил. Эвакуатор приехал
+																				БЫСТРЕЕ обещанного времени! Водитель
+																				Андрей профессионал высшего класса.
+																				Аккуратно погрузил машину с
+																				заблокированным колесом, закрепил по
+																				всем правилам. Довез до сервиса в Усть-Каменогорске
+																				без проблем. Цена полностью
+																				соответствовала озвученной по телефону.
+																				Честные, пунктуальные, вежливые. Очень
+																				рекомендую!</p>
+																		</div>
+
+																	</div>
+																</div>
+																<div class="bdt-ep-review-card-carousel-item swiper-slide"
+																	data-swiper-slide-index="1"
+																	style="width: 360px; margin-right: 20px;">
+																	<div class="bdt-ep-review-card-carousel-content">
+																		<h3 class="bdt-ep-review-card-carousel-name">
+																			Ольга Петрова </h3>
+
+																		<div
+																			class="bdt-ep-review-card-carousel-rating bdt-flex-inline bdt-flex-middle bdt-star bdt-before">
+																			<span class="epsc-rating epsc-rating-5-0">
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																			</span>
+																		</div>
+
+																		<div class="bdt-ep-review-card-carousel-text">
+																			<p>Машина заглохла ночью на трассе под
+																				Риддером. Темно, холодно, одна. Очень
+																				страшно. Нашла эту службу в интернете,
+																				позвонила. Эвакуатор приехал в течение
+																				часа! Водитель Андрей – настоящий
+																				молодец. Не только быстро и аккуратно
+																				погрузил авто, но и помог успокоиться,
+																				предложил чай из термоса. Довез до
+																				Усть-Каменогорска до моего сервиса. Работали четко,
+																				без лишних слов и накруток. Цена
+																				фиксированная, как и обещали. Теперь
+																				только к вам!</p>
+																		</div>
+
+																	</div>
+																</div>
+																<div class="bdt-ep-review-card-carousel-item swiper-slide swiper-slide-prev"
+																	data-swiper-slide-index="2"
+																	style="width: 360px; margin-right: 20px;">
+																	<div class="bdt-ep-review-card-carousel-content">
+																		<h3 class="bdt-ep-review-card-carousel-name">
+																			Сергей Бородач </h3>
+
+																		<div
+																			class="bdt-ep-review-card-carousel-rating bdt-flex-inline bdt-flex-middle bdt-star bdt-before">
+																			<span class="epsc-rating epsc-rating-5-0">
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																			</span>
+																		</div>
+
+																		<div class="bdt-ep-review-card-carousel-text">
+																			<p>Утром, в пробке на трассе А-3, сгорел стартер.
+																				Встал в крайнем левом ряду, создал затор
+																				– кошмар! Вызвал эвакуатоп по телефону.
+																				Приехал парень по имени Андрей. Место
+																				было не удобное, но он ювелирно
+																				подъехал, за считанные минуты погрузил
+																				машину на платформу с лебедкой (благо,
+																				она у них мощная). Несмотря на гудки
+																				нетерпеливых, работал спокойно и
+																				профессионально. Отвез в сервис на пр.
+																				Независимости. Оперативность, сноровка и
+																				вежливость – на высоте! Цена за спасение
+																				в час пик – более чем адекватная.
+																				Спасибо Андрею!</p>
+																		</div>
+
+																	</div>
+																</div>
+																<div class="bdt-ep-review-card-carousel-item swiper-slide swiper-slide-active"
+																	data-swiper-slide-index="3"
+																	style="width: 360px; margin-right: 20px;">
+																	<div class="bdt-ep-review-card-carousel-content">
+																		<h3 class="bdt-ep-review-card-carousel-name">
+																			Виктор Иванович </h3>
+
+																		<div
+																			class="bdt-ep-review-card-carousel-rating bdt-flex-inline bdt-flex-middle bdt-star bdt-before">
+																			<span class="epsc-rating epsc-rating-5-0">
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																			</span>
+																		</div>
+
+																		<div class="bdt-ep-review-card-carousel-text">
+																			<p>Возил внуков на выходные под Витебск. На
+																				обратном пути застучал мотор...
+																				Остановился, вызвал эвакуатор. Дорога
+																				неблизкая, но он прибыл в оговоренное
+																				время. Осмотрел машину, предложил
+																				попробовать долить масло (оказалось, оно
+																				было!), но я решил не рисковать и
+																				эвакуировать. Погрузка – чистое
+																				искусство! Довез аж до моего гаража в
+																				Восточно-Казахстанской области (Уськамен). По пути
+																				общался по-человечески. Рассчитались
+																				картой. Работают по всей стране, и это
+																				реально так! Цена за километраж –
+																				честная. Спасибо за надежность!</p>
+																		</div>
+
+																	</div>
+																</div>
+																<div class="bdt-ep-review-card-carousel-item swiper-slide swiper-slide-duplicate swiper-slide-next"
+																	data-swiper-slide-index="0"
+																	style="width: 360px; margin-right: 20px;">
+																	<div class="bdt-ep-review-card-carousel-content">
+																		<h3 class="bdt-ep-review-card-carousel-name">
+																			Андрей С. </h3>
+
+																		<div
+																			class="bdt-ep-review-card-carousel-rating bdt-flex-inline bdt-flex-middle bdt-star bdt-before">
+																			<span class="epsc-rating epsc-rating-5-0">
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																			</span>
+																		</div>
+
+																		<div class="bdt-ep-review-card-carousel-text">
+																			<p>Попал в небольшое ДТП на трассе А-2 под
+																				Уськаменом вечером. Машина не на ходу,
+																				нервы на пределе. Позвонил в эту службу
+																				–&nbsp; Дмитрий спокойно и четко все
+																				объяснил, успокоил. Эвакуатор приехал
+																				БЫСТРЕЕ обещанного времени! Водитель
+																				Дмитрий профессионал высшего класса.
+																				Аккуратно погрузил машину с
+																				заблокированным колесом, закрепил по
+																				всем правилам. Довез до сервиса в Усть-Каменогорске
+																				без проблем. Цена полностью
+																				соответствовала озвученной по телефону.
+																				Честные, пунктуальные, вежливые. Очень
+																				рекомендую!</p>
+																		</div>
+
+																	</div>
+																</div>
+																<div class="bdt-ep-review-card-carousel-item swiper-slide swiper-slide-duplicate"
+																	data-swiper-slide-index="1"
+																	style="width: 360px; margin-right: 20px;">
+																	<div class="bdt-ep-review-card-carousel-content">
+																		<h3 class="bdt-ep-review-card-carousel-name">
+																			Ольга Петрова </h3>
+
+																		<div
+																			class="bdt-ep-review-card-carousel-rating bdt-flex-inline bdt-flex-middle bdt-star bdt-before">
+																			<span class="epsc-rating epsc-rating-5-0">
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																			</span>
+																		</div>
+
+																		<div class="bdt-ep-review-card-carousel-text">
+																			<p>Машина заглохла ночью на трассе под
+																				Риддером. Темно, холодно, одна. Очень
+																				страшно. Нашла эту службу в интернете,
+																				позвонила. Эвакуатор приехал в течение
+																				часа! Водитель Дмитрий – настоящий
+																				молодец. Не только быстро и аккуратно
+																				погрузил авто, но и помог успокоиться,
+																				предложил чай из термоса. Довез до
+																				Усть-Каменогорска до моего сервиса. Работали четко,
+																				без лишних слов и накруток. Цена
+																				фиксированная, как и обещали. Теперь
+																				только к вам!</p>
+																		</div>
+
+																	</div>
+																</div>
+																<div class="bdt-ep-review-card-carousel-item swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev"
+																	data-swiper-slide-index="2"
+																	style="width: 360px; margin-right: 20px;">
+																	<div class="bdt-ep-review-card-carousel-content">
+																		<h3 class="bdt-ep-review-card-carousel-name">
+																			Сергей Бородач </h3>
+
+																		<div
+																			class="bdt-ep-review-card-carousel-rating bdt-flex-inline bdt-flex-middle bdt-star bdt-before">
+																			<span class="epsc-rating epsc-rating-5-0">
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																				<span class="epsc-rating-item"><i
+																						class="ep-icon-star"
+																						aria-hidden="true"></i></span>
+																			</span>
+																		</div>
+
+																		<div class="bdt-ep-review-card-carousel-text">
+																			<p>Утром, в пробке на трассе А-3, сгорел стартер.
+																				Встал в крайнем левом ряду, создал затор
+																				– кошмар! Вызвал эвакуатоп по телефону.
+																				Приехал парень по имени Дмитрий. Место
+																				было не удобное, но он ювелирно
+																				подъехал, за считанные минуты погрузил
+																				машину на платформу с лебедкой (благо,
+																				она у них мощная). Несмотря на гудки
+																				нетерпеливых, работал спокойно и
+																				профессионально. Отвез в сервис на пр.
+																				Независимости. Оперативность, сноровка и
+																				вежливость – на высоте! Цена за спасение
+																				в час пик – более чем адекватная.
+																				Спасибо Дмитрию!</p>
+																		</div>
+
+																	</div>
+																</div>
+															</div>
+															<span class="swiper-notification" aria-live="assertive"
+																aria-atomic="true"></span>
+														</div>
+
+														<div
+															class="bdt-position-z-index bdt-position-center bdt-visible@m">
+															<div class="bdt-arrows-container bdt-slidenav-container">
+																<a href=""
+																	class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav"
+																	tabindex="0" role="button"
+																	aria-label="Previous slide">
+																	<i class="ep-icon-arrow-left-0"
+																		aria-hidden="true"></i>
+																</a>
+																<a href=""
+																	class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav"
+																	tabindex="0" role="button" aria-label="Next slide">
+																	<i class="ep-icon-arrow-right-0"
+																		aria-hidden="true"></i>
+																</a>
+															</div>
+														</div>
+
+													</div>
+
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-73e3fe6f elementor-align-center elementor-widget elementor-widget-button"
+												data-id="73e3fe6f" data-element_type="widget"
+												data-widget_type="button.default">
+												<div class="elementor-widget-container">
+													<div class="elementor-button-wrapper">
+														<a href="tel:+375292726527"
+															class="elementor-button-link elementor-button elementor-size-md"
+															role="button">
+															<span class="elementor-button-content-wrapper">
+																<span
+																	class="elementor-button-icon elementor-align-icon-left">
+																	<i aria-hidden="true"
+																		class=" icomoon-the7-font-the7-phone-02"></i>
+																</span>
+																<span class="elementor-button-text">Узнать стоимость
+																</span>
+															</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+
+					</div><!-- #content -->
+
+
+
+
+				</div><!-- .wf-container -->
+			</div><!-- .wf-wrap -->
+
+
+		</div><!-- #main -->
+
+
+
+
+		<!-- !Footer -->
+		<footer id="footer" class="footer solid-bg elementor-footer empty-footer">
+
+
+			<div class="wf-wrap">
+				<div class="wf-container-footer">
+					<div class="wf-container">
+						<div data-elementor-type="footer" data-elementor-id="72"
+							class="elementor elementor-72 elementor-location-footer">
+							<section
+								class="elementor-section elementor-top-section elementor-element elementor-element-70c6a038 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+								data-id="70c6a038" data-element_type="section"
+								data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-3cb27b8f animated fadeInUp"
+										data-id="3cb27b8f" data-element_type="column"
+										data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;}">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-9966824 elementor-widget elementor-widget-image"
+												data-id="9966824" data-element_type="widget"
+												data-widget_type="image.default">
+												<div class="elementor-widget-container">
+													<a href="#">
+														<img width="299" height="144" src="./logow.png"
+															class="attachment-large size-large wp-image-108" alt=""
+															loading="lazy"> </a>
+												</div>
+											</div>
+											<section
+												class="elementor-section elementor-inner-section elementor-element elementor-element-5c8c1162 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+												data-id="5c8c1162" data-element_type="section">
+												<div class="elementor-container elementor-column-gap-no">
+													<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-f2fad18"
+														data-id="f2fad18" data-element_type="column">
+														<div class="elementor-widget-wrap elementor-element-populated">
+															<div class="elementor-element elementor-element-6f4c0657 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+																data-id="6f4c0657" data-element_type="widget"
+																data-widget_type="icon-list.default">
+																<div class="elementor-widget-container">
+																	<ul class="elementor-icon-list-items">
+																		<li class="elementor-icon-list-item">
+																			<a href="tel:+77772967627">
+
+																				<span class="elementor-icon-list-icon">
+																					<i aria-hidden="true"
+																						class="fas fa-mobile-alt"></i>
+																				</span>
+																				<span class="elementor-icon-list-text">
+																					+7 777 296 7627
+																				</span><br>
+
+
+																			</a>
+																		</li>
+																		<li class="elementor-icon-list-item">
+																			<a href="tel:+77772545581">
+
+																				<span class="elementor-icon-list-icon">
+																					<i aria-hidden="true"
+																						class="fas fa-mobile-alt"></i>
+																				</span>
+																				<span class="elementor-icon-list-text">
+																					+7 777 254 5581
+																				</span><br>
+
+
+																			</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</section>
+											<div class="elementor-element elementor-element-24ba0b8f elementor-widget elementor-widget-text-editor"
+												data-id="24ba0b8f" data-element_type="widget"
+												data-widget_type="text-editor.default">
+												<div class="elementor-widget-container">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-6ebcb5eb animated fadeInUp"
+										data-id="6ebcb5eb" data-element_type="column"
+										data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:350}">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-410d7831 elementor-widget elementor-widget-bdt-advanced-heading"
+												data-id="410d7831" data-element_type="widget"
+												data-widget_type="bdt-advanced-heading.default">
+												<div class="elementor-widget-container">
+													<div id="410d7831" class="bdt-ep-advanced-heading"
+														data-settings="{&quot;titleMultiColor&quot;:&quot;no&quot;}">
+														<p class="bdt-ep-advanced-heading-title"><a href="#"><span
+																	class="bdt-ep-advanced-heading-main-title"><span
+																		class="bdt-ep-advanced-heading-main-title-inner">Реквизиты</span></span></a>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-6a4cf069 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+												data-id="6a4cf069" data-element_type="widget"
+												data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-info-circle"></i>
+															</span>
+															<span class="elementor-icon-list-text">
+																Оплата принемается на расчетный счет в банке
+																(безналичный расчет) и наличными при
+																оказании услуги.
+															</span>
+														</li>
+														<!-- <li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-info-circle"></i>
+															</span>
+															<span class="elementor-icon-list-text">УНП 691102214</span>
+														</li> -->
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-3d83a021 animated fadeInUp"
+										data-id="3d83a021" data-element_type="column"
+										data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:650}">
+										<div class="elementor-widget-wrap">
+										</div>
+									</div>
+								</div>
+							</section>
+							<section
+								class="elementor-section elementor-top-section elementor-element elementor-element-77aa8dcf elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+								data-id="77aa8dcf" data-element_type="section">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-c8e6d1b"
+										data-id="c8e6d1b" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-500058e8 elementor-widget elementor-widget-text-editor"
+												data-id="500058e8" data-element_type="widget"
+												data-widget_type="text-editor.default">
+												<div class="elementor-widget-container">
+													Разработка сайта <a href="{offer}">bnvspace@gmail.com</a> </div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+					</div><!-- .wf-container -->
+				</div><!-- .wf-container-footer -->
+			</div><!-- .wf-wrap -->
+
+
+		</footer><!-- #footer -->
+
+		<a href="#" class="scroll-top off"><span class="screen-reader-text">Вверх</span></a>
+
+	</div><!-- #page -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<span id="elementor-device-mode" class="elementor-screen-only"></span>
+
+
+
+
+
+
+
+
+
+
+
+
+	<svg style="display: none;" class="e-font-icon-svg-symbols"></svg>
+
+	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="pswp__bg"></div>
+		<div class="pswp__scroll-wrap">
+			<div class="pswp__container">
+				<div class="pswp__item"></div>
+				<div class="pswp__item"></div>
+				<div class="pswp__item"></div>
+			</div>
+			<div class="pswp__ui pswp__ui--hidden">
+				<div class="pswp__top-bar">
+					<div class="pswp__counter"></div>
+					<button class="pswp__button pswp__button--close" title="Close (Esc)"
+						aria-label="Close (Esc)"></button>
+					<button class="pswp__button pswp__button--share" title="Share" aria-label="Share"></button>
+					<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"
+						aria-label="Toggle fullscreen"></button>
+					<button class="pswp__button pswp__button--zoom" title="Zoom in/out"
+						aria-label="Zoom in/out"></button>
+					<div class="pswp__preloader">
+						<div class="pswp__preloader__icn">
+							<div class="pswp__preloader__cut">
+								<div class="pswp__preloader__donut"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+					<div class="pswp__share-tooltip"></div>
+				</div>
+				<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"
+					aria-label="Previous (arrow left)">
+				</button>
+				<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"
+					aria-label="Next (arrow right)">
+				</button>
+				<div class="pswp__caption">
+					<div class="pswp__caption__center"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="mobile-sticky-header-overlay"></div>
+	<div class="iso-preloader dt-posts-preload dt-posts-preload-active" style="display: none;">
+		<div class="dt-posts-preload-activity"></div>
+	</div>
+
+	<script>
+		// Инициализация видео галереи
+		document.addEventListener('DOMContentLoaded', function() {
+			// Добавляем кнопки воспроизведения к элементам с видео
+			var videoLinks = document.querySelectorAll('a[href*=".mp4"]');
+			videoLinks.forEach(function(link) {
+				var galleryItem = link.closest('.bdt-ep-advanced-image-gallery-item');
+				if (galleryItem) {
+					galleryItem.setAttribute('data-video', 'true');
+
+					// Добавляем кнопку воспроизведения
+					var playButton = document.createElement('div');
+					playButton.className = 'video-play-button';
+					playButton.innerHTML = '<i class="fas fa-play"></i>';
+
+					// Добавляем обработчик клика для кнопки
+					playButton.addEventListener('click', function(e) {
+						e.preventDefault();
+						e.stopPropagation();
+						// Запускаем лайтбокс через клик на ссылку
+						link.click();
+					});
+
+					galleryItem.appendChild(playButton);
+				}
+			});
+
+			// Автовоспроизведение видео в BDT UIKit лайтбоксе
+			UIkit.util.on(document, 'show', '.bdt-ep-advanced-image-gallery[data-bdt-lightbox]', function(e) {
+				setTimeout(function() {
+					// Находим видео элементы в открытом лайтбоксе
+					var videoElements = document.querySelectorAll('.uk-lightbox.uk-open video');
+					videoElements.forEach(function(video) {
+						video.muted = true; // Отключаем звук для автовоспроизведения
+						video.controls = true; // Показываем контролы
+						video.play().catch(function(error) {
+							console.log('Автовоспроизведение заблокировано:', error);
+						});
+					});
+				}, 100);
+			});
+		});
+	</script>
 </body>
 
 </html>
