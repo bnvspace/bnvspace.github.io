@@ -445,7 +445,7 @@
 		}
 
 		.area-card span,
-		.case-card span {
+		.case-card span:not(.case-meta) {
 			display: block;
 			color: #536170;
 			font-size: 16px;
@@ -453,7 +453,7 @@
 		}
 
 		.case-meta {
-			display: inline-flex;
+			display: inline-flex !important;
 			margin-bottom: 12px;
 			padding: 5px 10px;
 			border-radius: 999px;
@@ -461,6 +461,7 @@
 			color: #b91c1c;
 			font-size: 13px;
 			font-weight: 800;
+			width: fit-content;
 		}
 
 		.proof-grid {
