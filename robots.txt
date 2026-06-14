@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bnvspace.github.io/sitemap.xml
+Sitemap: https://parusevo.kz/sitemap.xml
