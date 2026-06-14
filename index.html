@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru-RU"
 	class="js supports no-touchevents no-forcetouch objectfit object-fit cssanimations no-cssgridlegacy cssgrid cssfilters csstransforms csstransforms3d csstransitions mobile-false not-iOS"
 	style=""><!--<![endif]-->
@@ -742,6 +742,11 @@
 			.mobile-call-secondary {
 				background: rgba(255, 255, 255, 0.12);
 				border: 1px solid rgba(255, 255, 255, 0.2);
+			}
+
+			.mobile-call-whatsapp {
+				background: #25d366;
+				box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
 			}
 		}
 
@@ -2548,7 +2553,7 @@
 												data-id="500058e8" data-element_type="widget"
 												data-widget_type="text-editor.default">
 												<div class="elementor-widget-container">
-													Разработка сайта <a href="{offer}">bnvspace@gmail.com</a> </div>
+													Разработка сайта <a href="https://t.me/bnvspace" target="_blank">@bnvspace</a> </div>
 											</div>
 										</div>
 									</div>
@@ -2770,29 +2775,53 @@
 	</a>
 	<div class="mobile-call-bar" aria-label="Быстрый вызов эвакуатора">
 		<a class="mobile-call-primary js-open-phone-popup" href="tel:+77772967627">Позвонить</a>
-		<a class="mobile-call-secondary" href="#content">Услуги</a>
+		<a class="mobile-call-whatsapp" href="https://wa.me/77772967627?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9D%D1%83%D0%B6%D0%B5%D0%BD%20%D1%8D%D0%B2%D0%B0%D0%BA%D1%83%D0%B0%D1%82%D0%BE%D1%80." target="_blank">WhatsApp</a>
 	</div>
 	<div id="phonePopup" class="phone-popup-overlay">
 		<div class="phone-popup">
 			<button class="phone-popup-close">&times;</button>
-			<h3 class="phone-popup-title">Выберите номер для звонка</h3>
+			<h3 class="phone-popup-title">Связаться с водителем</h3>
 			<div class="phone-popup-buttons">
-				<a href="tel:+77772967627" class="phone-popup-btn">
-					<svg class="phone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-						<path
-							d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-					</svg>
-					<span>Дмитрий</span>
-					<span>+7 (777) 296-76-27</span>
-				</a>
-				<a href="tel:+77772545581" class="phone-popup-btn">
-					<svg class="phone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-						<path
-							d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-					</svg>
-					<span>Андрей</span>
-					<span>+7 (777) 254-55-81</span>
-				</a>
+				<div class="phone-popup-driver-card">
+					<div class="phone-popup-driver-info">
+						<span class="phone-popup-driver-name">Дмитрий</span>
+						<span class="phone-popup-driver-desc">Основной телефон службы</span>
+					</div>
+					<div class="phone-popup-driver-actions">
+						<a href="tel:+77772967627" class="phone-popup-action-btn phone-popup-call">
+							<svg class="phone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+							</svg>
+							Позвонить
+						</a>
+						<a href="https://wa.me/77772967627?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9D%D1%83%D0%B6%D0%B5%D0%BD%20%D1%8D%D0%B2%D0%B0%D0%BA%D1%83%D0%B0%D1%82%D0%BE%D1%80." target="_blank" class="phone-popup-action-btn phone-popup-wa">
+							<svg class="phone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.459 3.479 1.332 5.003l-1.356 4.975 5.093-1.337c1.472.802 3.125 1.223 4.807 1.223 5.506 0 9.988-4.482 9.988-9.988C22 6.482 17.518 2 12.012 2zm4.567 13.918c-.25.703-1.442 1.368-2.025 1.454-.5.074-1.15.132-3.328-.767-2.783-1.15-4.576-3.99-4.715-4.178-.14-.188-1.116-1.488-1.116-2.838 0-1.35.706-2.012.956-2.274.25-.262.544-.328.725-.328.18 0 .363.003.52.012.162.008.38-.062.593.454.22.531.75 1.832.813 1.968.063.136.104.296.012.48-.09.184-.136.297-.272.454-.136.157-.286.35-.41.474-.138.138-.282.288-.12.568.163.28.724 1.196 1.55 1.933.826.737 1.522.964 1.803 1.079.28.115.443.097.607-.092.164-.188.707-.822.895-1.106.188-.284.376-.238.636-.142.26.096 1.64.774 1.92 1.914.073.303.073.57.073.812-.001.242-.093.938-.343 1.641z" />
+							</svg>
+							WhatsApp
+						</a>
+					</div>
+				</div>
+				<div class="phone-popup-driver-card">
+					<div class="phone-popup-driver-info">
+						<span class="phone-popup-driver-name">Андрей</span>
+						<span class="phone-popup-driver-desc">Дополнительный телефон</span>
+					</div>
+					<div class="phone-popup-driver-actions">
+						<a href="tel:+77772545581" class="phone-popup-action-btn phone-popup-call">
+							<svg class="phone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+							</svg>
+							Позвонить
+						</a>
+						<a href="https://wa.me/77772545581?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9D%D1%83%D0%B6%D0%B5%D0%BD%20%D1%8D%D0%B2%D0%B0%D0%BA%D1%83%D0%B0%D1%82%D0%BE%D1%80." target="_blank" class="phone-popup-action-btn phone-popup-wa">
+							<svg class="phone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.459 3.479 1.332 5.003l-1.356 4.975 5.093-1.337c1.472.802 3.125 1.223 4.807 1.223 5.506 0 9.988-4.482 9.988-9.988C22 6.482 17.518 2 12.012 2zm4.567 13.918c-.25.703-1.442 1.368-2.025 1.454-.5.074-1.15.132-3.328-.767-2.783-1.15-4.576-3.99-4.715-4.178-.14-.188-1.116-1.488-1.116-2.838 0-1.35.706-2.012.956-2.274.25-.262.544-.328.725-.328.18 0 .363.003.52.012.162.008.38-.062.593.454.22.531.75 1.832.813 1.968.063.136.104.296.012.48-.09.184-.136.297-.272.454-.136.157-.286.35-.41.474-.138.138-.282.288-.12.568.163.28.724 1.196 1.55 1.933.826.737 1.522.964 1.803 1.079.28.115.443.097.607-.092.164-.188.707-.822.895-1.106.188-.284.376-.238.636-.142.26.096 1.64.774 1.92 1.914.073.303.073.57.073.812-.001.242-.093.938-.343 1.641z" />
+							</svg>
+							WhatsApp
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

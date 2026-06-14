@@ -84,6 +84,11 @@ a {
 	border-radius: 8px;
 	text-decoration: none;
 	font-weight: 800;
+	transition: all 0.25s ease;
+}
+
+.landing-btn:hover {
+	transform: translateY(-2px);
 }
 
 .landing-btn-primary {
@@ -92,10 +97,30 @@ a {
 	box-shadow: 0 18px 38px rgba(225, 29, 46, 0.32);
 }
 
+.landing-btn-primary:hover {
+	background: #b91c1c;
+	box-shadow: 0 18px 38px rgba(185, 28, 28, 0.42);
+}
+
 .landing-btn-secondary {
 	border: 1px solid rgba(255, 255, 255, 0.28);
 	background: rgba(255, 255, 255, 0.1);
 	color: #fff;
+}
+
+.landing-btn-secondary:hover {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.landing-btn-whatsapp {
+	background: #25d366;
+	color: #fff;
+	box-shadow: 0 18px 38px rgba(37, 211, 102, 0.32);
+}
+
+.landing-btn-whatsapp:hover {
+	background: #128c7e;
+	box-shadow: 0 18px 38px rgba(18, 140, 126, 0.42);
 }
 
 .landing-section {

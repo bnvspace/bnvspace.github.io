@@ -3175,3 +3175,78 @@ font-size: 16px !important;
     font-size: 16px;
   }
 }
+
+/* Custom styles for driver cards in the phone popup */
+.phone-popup-driver-card {
+  border: 1px solid #edf2f7;
+  border-radius: 14px;
+  padding: 16px;
+  background: #f7fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.phone-popup-driver-card:last-child {
+  margin-bottom: 0;
+}
+
+.phone-popup-driver-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-popup-driver-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.phone-popup-driver-desc {
+  font-size: 13px;
+  color: #718096;
+}
+
+.phone-popup-driver-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.phone-popup-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  transition: all 0.25s ease;
+}
+
+.phone-popup-call {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+}
+
+.phone-popup-call:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.35);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.phone-popup-wa {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+}
+
+.phone-popup-wa:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+  background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
+}
