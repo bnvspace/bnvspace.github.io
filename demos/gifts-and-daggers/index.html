@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/webp" href="./assets/loading/loading_crest.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a0f" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="robots" content="noindex" />
+    <title>Gift&apos;s &amp; Daggers — demo</title>
+    <meta name="description" content="Pixel dark fantasy roguelite with slot-machine combat. Offline demo build." />
+    <script>
+      // Offline demo bootstrap.
+      // 1) __GD_BASE__ is the folder this page is served from (ends with "/"); every asset path is built from it.
+      // 2) Network guard: the demo may only read its own static files. Anything else (APIs, other origins) is refused.
+      (function () {
+        var base = new URL('./', document.baseURI);
+        window.__GD_BASE__ = base.pathname;
+        if (typeof window.fetch !== 'function') return;
+        var nativeFetch = window.fetch.bind(window);
+        window.fetch = function (input, init) {
+          try {
+            var raw = typeof input === 'string' ? input : (input && input.url) || String(input);
+            var target = new URL(raw, document.baseURI);
+            if (target.origin === base.origin && target.pathname.indexOf(base.pathname) === 0) {
+              return nativeFetch(input, init);
+            }
+          } catch (error) {
+            // fall through to the refusal below
+          }
+          return Promise.reject(new TypeError('Network is disabled in the offline demo'));
+        };
+      })();
+    </script>
+    <link rel="preload" as="image" type="image/webp" href="./assets/loading/loading_backdrop.webp" fetchpriority="high" />
+    <link rel="preload" as="image" type="image/webp" href="./assets/loading/loading_panel.webp" fetchpriority="high" />
+    <link rel="preload" as="image" type="image/webp" href="./assets/loading/loading_crest.webp" />
+    <link rel="preload" as="image" type="image/webp" href="./assets/loading/loading_progress_frame.webp" />
+    <link rel="preload" as="image" type="image/webp" href="./assets/loading/loading_progress_fill.webp" />
+    <style>
+      html, body, #root { width: 100%; height: 100%; margin: 0; background: #02040b; }
+      .boot-shell { --boot-u: calc(100cqw / 1080); position: relative; width: 100%; height: 100%; min-height: 0; overflow: hidden; container-type: inline-size; color: #fff0b0; background: url('assets/loading/loading_backdrop.webp') center / 100% 100% no-repeat, #02040b; font-family: Georgia, serif; }
+      .boot-shell__crest { position: absolute; top: calc(180 * var(--boot-u)); left: 50%; width: calc(690 * var(--boot-u)); height: auto; transform: translateX(-50%); filter: drop-shadow(0 calc(34 * var(--boot-u)) calc(34 * var(--boot-u)) #0008); animation: boot-pulse 1.8s ease-in-out infinite; }
+      .boot-shell__panel { position: absolute; right: calc(70 * var(--boot-u)); bottom: calc(214 * var(--boot-u)); left: calc(70 * var(--boot-u)); min-height: calc(642 * var(--boot-u)); box-sizing: border-box; padding: calc(176 * var(--boot-u)) calc(132 * var(--boot-u)) calc(116 * var(--boot-u)); background: url('assets/loading/loading_panel.webp') center / 100% 100% no-repeat; filter: drop-shadow(0 calc(22 * var(--boot-u)) calc(22 * var(--boot-u)) #0007); }
+      .boot-shell__title { margin: 0 0 calc(52 * var(--boot-u)); font-size: clamp(24px, calc(70 * var(--boot-u)), 70px); font-weight: 900; line-height: 1; text-align: center; text-shadow: 0 calc(5 * var(--boot-u)) #42220a; }
+      .boot-shell__progress { height: calc(102 * var(--boot-u)); box-sizing: border-box; padding: calc(30 * var(--boot-u)) calc(56 * var(--boot-u)) calc(28 * var(--boot-u)); background: url('assets/loading/loading_progress_frame.webp') center / 100% 100% no-repeat; }
+      @keyframes boot-pulse { 50% { transform: translateX(-50%) scale(1.018); filter: brightness(1.1) drop-shadow(0 calc(34 * var(--boot-u)) calc(34 * var(--boot-u)) #0008); } }
+      @media (prefers-reduced-motion: reduce) { .boot-shell__crest { animation: none; } }
+    </style>
+    <script type="module" crossorigin src="./assets/index-BbMgqnyY.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-Cyuzqnbw.js">
+    <link rel="modulepreload" crossorigin href="./assets/motion-vendor-DiMMIrIY.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-vendor-BFUEbfxY.js">
+    <link rel="modulepreload" crossorigin href="./assets/platform-vendor-Cv-sgYYu.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-BhQRqIgD.css">
+  </head>
+  <body>
+    <div id="root"><div class="boot-shell" aria-label="Загрузка"><img class="boot-shell__crest" src="./assets/loading/loading_crest.webp" alt="" /><div class="boot-shell__panel"><div class="boot-shell__title">ЗАГРУЗКА</div><div class="boot-shell__progress"></div></div></div></div>
+  </body>
+</html>

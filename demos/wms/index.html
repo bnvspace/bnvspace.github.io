@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8f9fd" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <meta
+      name="description"
+      content="Демонстрационный экран управления товарами на складе WMS A2"
+    />
+    <title>WMS A2 — Товары на складе</title>
+    <script defer src="./assets/index-Da96Y7U2.js"></script>
+    <link rel="stylesheet" href="./assets/index-BYHxELGG.css">
+    <!-- Portfolio demo shims (not part of the original build; the CSS/JS bundles are untouched). -->
+    <style>
+      /* In table mode the "Открыть" action is wider than its 12-14% column at some widths
+         (764-848px and 1004-1196px) and its arrow gets cut off at the card edge. In these ranges
+         the action is pinned 8px from the right edge instead (same spot as at 1280px). */
+      @media (min-width: 761px) and (max-width: 900px), (min-width: 1001px) and (max-width: 1280px) {
+        .action-cell { padding-left: 0; padding-right: 8px; }
+        .action-cell .open-button { margin-left: -24px; }
+      }
+    </style>
+    <script>
+      // The "#..." navigation links are placeholders. Inside an iframe a fragment navigation
+      // scrolls the embedding page, so it is cancelled here.
+      document.addEventListener('click', function (event) {
+        var link = event.target && event.target.closest ? event.target.closest('a[href^="#"]') : null;
+        if (link) event.preventDefault();
+      });
+    </script>
+  </head>
+  <body>
+    <svg class="svg-sprite" aria-hidden="true">
+      <symbol id="icon-grid" viewBox="0 0 24 24">
+        <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" />
+      </symbol>
+      <symbol id="icon-warehouse" viewBox="0 0 24 24">
+        <path d="M3 8h18M5 8v12h14V8M4 4h16l1 4H3l1-4Zm5 8h6" />
+      </symbol>
+      <symbol id="icon-box" viewBox="0 0 24 24">
+        <path d="M4 7h16v13H4zM3 4h18v3H3zM9 11h6" />
+      </symbol>
+      <symbol id="icon-cart" viewBox="0 0 24 24">
+        <path d="M3 4h2l2.2 10.5h9.9L20 7H6M9 19.5h.01M17 19.5h.01" />
+      </symbol>
+      <symbol id="icon-settings" viewBox="0 0 24 24">
+        <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" />
+        <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5v.2h-4v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H3v-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V3h4v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1h.2v4h-.2a1.7 1.7 0 0 0-1.5 1Z" />
+      </symbol>
+      <symbol id="icon-bell" viewBox="0 0 24 24">
+        <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 7h18s-3 0-3-7ZM10 20h4" />
+      </symbol>
+      <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m8 10 4 4 4-4" />
+      </symbol>
+      <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-4-4" />
+      </symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14M14 7l5 5-5 5" />
+      </symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24">
+        <path d="m6 6 12 12M18 6 6 18" />
+      </symbol>
+      <symbol id="icon-shirt" viewBox="0 0 24 24">
+        <path d="m8 4-5 3 2 4 3-1v10h8V10l3 1 2-4-5-3c-.5 1.4-1.8 2-4 2S8.5 5.4 8 4Z" />
+      </symbol>
+      <symbol id="icon-shoe" viewBox="0 0 24 24">
+        <path d="M4 13c2.5.2 4.5-.3 6-1.5V6h3c.5 3.2 2.6 5 6.5 5.5l1.5.2V18H4v-5Z" />
+        <path d="M8 15h3M13 13h2" />
+      </symbol>
+      <symbol id="icon-backpack" viewBox="0 0 24 24">
+        <path d="M7 8h10a3 3 0 0 1 3 3v9H4v-9a3 3 0 0 1 3-3ZM9 8V6a3 3 0 0 1 6 0v2M8 13h8v4H8z" />
+      </symbol>
+      <symbol id="icon-cap" viewBox="0 0 24 24">
+        <path d="M4 13a8 8 0 0 1 16 0v2H4v-2ZM12 15c0 3-3 4-8 3" />
+      </symbol>
+      <symbol id="icon-jacket" viewBox="0 0 24 24">
+        <path d="m9 4-5 3 2 5 2-1v9h8v-9l2 1 2-5-5-3-3 3-3-3ZM12 7v13" />
+      </symbol>
+      <symbol id="icon-bag" viewBox="0 0 24 24">
+        <path d="M5 8h14l1 12H4L5 8ZM9 9V6a3 3 0 0 1 6 0v3" />
+      </symbol>
+      <symbol id="icon-location" viewBox="0 0 24 24">
+        <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </symbol>
+      <symbol id="icon-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </symbol>
+    </svg>
+
+    <header class="topbar">
+      <div class="brand-area">
+        <a class="brand" href="#" aria-label="WMS A2, главная">WMS A2</a>
+        <nav class="topnav" aria-label="Основные разделы">
+          <a class="topnav__link topnav__link--active" href="#inventory">Товары</a>
+          <a class="topnav__link" href="#orders">Заказы</a>
+        </nav>
+      </div>
+      <div class="profile-area">
+        <button class="icon-button notification-button" type="button" aria-label="Уведомления">
+          <svg><use href="#icon-bell" /></svg>
+          <span class="notification-dot" aria-hidden="true"></span>
+        </button>
+        <button class="profile-button" type="button" aria-label="Открыть меню пользователя">
+          <span class="avatar" aria-hidden="true">А</span>
+          <span class="profile-name">Алексей</span>
+          <svg><use href="#icon-chevron" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" aria-label="Навигация по системе">
+      <nav class="sidebar__nav">
+        <a class="sidebar__link" href="#dashboard">
+          <svg><use href="#icon-grid" /></svg><span>Дашборд</span>
+        </a>
+        <a class="sidebar__link" href="#warehouse">
+          <svg><use href="#icon-warehouse" /></svg><span>Склад</span>
+        </a>
+        <a class="sidebar__link sidebar__link--active" href="#inventory" aria-current="page">
+          <svg><use href="#icon-box" /></svg><span>Товары</span>
+        </a>
+        <a class="sidebar__link" href="#orders">
+          <svg><use href="#icon-cart" /></svg><span>Заказы</span>
+        </a>
+      </nav>
+      <a class="sidebar__link sidebar__settings" href="#settings">
+        <svg><use href="#icon-settings" /></svg><span>Настройки</span>
+      </a>
+    </aside>
+
+    <main class="page" id="inventory">
+      <section class="page-heading" aria-labelledby="page-title">
+        <p class="eyebrow">Склад № 2 · Москва</p>
+        <h1 id="page-title">Товары на складе</h1>
+        <p>Управление остатками, размещением и статусами товаров</p>
+      </section>
+
+      <section class="toolbar" aria-label="Поиск и фильтрация товаров">
+        <label class="search-field" for="product-search">
+          <span class="visually-hidden">Поиск по товару или SKU</span>
+          <svg aria-hidden="true"><use href="#icon-search" /></svg>
+          <input
+            id="product-search"
+            type="search"
+            placeholder="Поиск по товару или SKU"
+            autocomplete="off"
+          />
+          <kbd aria-hidden="true">/</kbd>
+        </label>
+
+        <label class="select-field" for="status-filter">
+          <span class="visually-hidden">Фильтр по статусу</span>
+          <select id="status-filter">
+            <option value="all">Все статусы</option>
+            <option value="ready">Готов к отгрузке</option>
+            <option value="storage">На хранении</option>
+            <option value="picking">На сборке</option>
+            <option value="written-off">Списан</option>
+          </select>
+          <svg aria-hidden="true"><use href="#icon-chevron" /></svg>
+        </label>
+
+        <p class="result-count" id="result-count" aria-live="polite"></p>
+      </section>
+
+      <section class="inventory-card" aria-label="Список товаров">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">SKU</th>
+                <th scope="col">Товар</th>
+                <th scope="col">Ячейка</th>
+                <th scope="col">Статус</th>
+                <th scope="col"><span class="visually-hidden">Действия</span></th>
+              </tr>
+            </thead>
+            <tbody id="product-list"></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="empty-state" hidden>
+          <div class="empty-state__icon"><svg><use href="#icon-search" /></svg></div>
+          <h2>Товары не найдены</h2>
+          <p>Попробуйте изменить запрос или сбросить выбранный статус.</p>
+          <button class="secondary-button" id="reset-filters" type="button">Сбросить фильтры</button>
+        </div>
+      </section>
+    </main>
+
+    <div class="drawer-layer" id="drawer-layer" hidden>
+      <button
+        class="drawer-backdrop"
+        type="button"
+        aria-label="Закрыть карточку товара"
+        tabindex="-1"
+      ></button>
+      <aside
+        class="product-drawer"
+        id="product-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="drawer-title"
+        tabindex="-1"
+      >
+        <header class="drawer-header">
+          <div>
+            <p class="drawer-sku" id="drawer-sku"></p>
+            <h2 id="drawer-title"></h2>
+          </div>
+          <button class="icon-button drawer-close" type="button" aria-label="Закрыть карточку">
+            <svg><use href="#icon-close" /></svg>
+          </button>
+        </header>
+        <div class="drawer-body" id="drawer-body"></div>
+      </aside>
+    </div>
+  </body>
+</html>
